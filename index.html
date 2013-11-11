@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<!-- Viewport för att göra så att man inte kan zooma på mobil enhet -->
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+ <meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="main.css">
+<head>
+	<title>Atlas</title>
+</head>
+<script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.7.4.min.js"></script>
+	<body>
+		<div class="container">		
+			<div class="navbar"> <p>Frågor</p></div>
+			<div class="quiz"><p>Bilder</p></div>
+			<div id="canvas"></div>
+			<div class="help"><p>Nånting</p></div>
+			 <script defer="defer">
+			        //Skapar stagen
+			        //Container: Bestämmer vart canvasen ska lägga sig
+			        //Width: Storlek på stagen
+			        //Height: Höjd på stagen
+			        var stage = new Kinetic.Stage({
+			          container: "canvas",
+			          width: 819,
+			          height: 537
+			        });
+
+			        //Skapar ett lager till stagen
+			        var layer = new Kinetic.Layer();
+
+			        //Lägger till lagret i stagen
+			        stage.add(layer);
+			        
+			        //Skapar cirkelobjektet 
+			        //x: bestämmer startposition i x
+			        //y: bestämmer startposition i y
+			        //Radius: bestämmer radien
+			        //Fill: bestämmer innerfärgen
+			        //Stroke: bestämmer randfärgen
+			        //Strokewidth: randstorlek
+			        //draggable: true/false
+			        //dragbounds: Vart man får dra den
+			        var circle = new Kinetic.Circle({
+			        	x: stage.getWidth() /2,
+			        	y: stage.getHeight() /2,
+			        	radius: 20,
+			        	fill: 'red',
+			        	stroke: 'black',
+			        	strokeWidth: 4,
+			        	draggable: true,
+			        	dragbounds: {
+			        		left: stage.getWidth(), right: stage.getHeight()
+			        	}
+			        });
+
+			         var circle2 = new Kinetic.Circle({
+			        	x: stage.getWidth() /4,
+			        	y: stage.getHeight() /4,
+			        	radius: 10,
+			        	fill: 'red',
+			        	stroke: 'black',
+			        	strokeWidth: 4,
+			        	draggable: false,
+			        	dragbounds: {
+			        		left: stage.getWidth(), right: stage.getHeight()
+			        	}
+			        });
+
+			        var line = new Kinetic.Line({ 
+			            stroke: 'red',
+					    strokeWidth: 1,
+					});
+
+ 					
+			        
+			     //Kollar position när man slutar dra
+			     //Skriver ut positionen i x/y-led
+			     //Sätter punkterna linjen ska gå emellan
+			     //lägger till linjen och cirkeln till lagret och ritar om
+			     circle.on('dragend', function() {
+			        //alert(circle.getPosition().x);
+			       // alert(circle.getPosition().y);
+			        circle.setDraggable(false)
+			  line.setPoints([circle2.getPosition().x, circle2.getPosition().y, circle.getPosition().x, circle.getPosition().y]);
+
+			  		layer.add(line);
+			        layer.add(circle2);
+			        layer.draw();
+			        setInterval(function(){window.location="http://www.carlenglund.se/atlas"},3000);
+
+
+     			 });
+
+			     //Lägger till cirkeln till lagret och sedan lägger lagret i stagen
+			      layer.add(circle);
+			      stage.add(layer);
+
+			    </script>
+			
+		</div>
+
+
+	</body>
+</html>
+
+<!--<script>$('#lol').draggable();</script>-->
+
+
