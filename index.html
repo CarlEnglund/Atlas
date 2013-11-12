@@ -8,21 +8,24 @@
 	<title>Atlas</title>
 </head>
 <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.7.4.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<body>
 		<div class="container">		
-			<div class="navbar"> <p>Frågor</p></div>
-			<div class="quiz"><p>Bilder</p></div>
+			<!--<div class="navbar"> <p>Frågor</p></div>
+			<div class="quiz"><p>Bilder</p></div>-->
 			<div id="canvas"></div>
-			<div class="help"><p>Nånting</p></div>
+			<!--<div class="help"><p>Nånting</p></div>-->
 			 <script defer="defer">
 			        //Skapar stagen
 			        //Container: Bestämmer vart canvasen ska lägga sig
 			        //Width: Storlek på stagen
 			        //Height: Höjd på stagen
+			        var w = $(".container").width()
+			        var h = $(".container").height()
 			        var stage = new Kinetic.Stage({
 			          container: "canvas",
-			          width: 819,
-			          height: 537
+			          width: w,
+			          height: h
 			        });
 
 			        //Skapar ett lager till stagen
@@ -54,8 +57,8 @@
 			        });
 
 			         var circle2 = new Kinetic.Circle({
-			        	x: stage.getWidth() /4,
-			        	y: stage.getHeight() /4,
+			        	x: w /4,
+			        	y: h /4,
 			        	radius: 10,
 			        	fill: 'red',
 			        	stroke: 'black',
@@ -71,7 +74,26 @@
 					    strokeWidth: 1,
 					});
 
- 					
+			        var imageObj = new Image();
+			        imageObj.onload = function() {
+				        var yoda = new Kinetic.Image({
+				          x: 39,
+				          y: 552,
+				          image: imageObj,
+				          width: 106,
+				          height: 118,
+				         
+				        });
+
+				         var simpleText = new Kinetic.Text({
+					        x: 153,
+					        y: 627,
+					        text: 'hejhjejej',
+					        fontSize: 30,
+					        fontFamily: 'Calibri',
+					        fill: 'green'
+					       
+					      });
 			        
 			     //Kollar position när man slutar dra
 			     //Skriver ut positionen i x/y-led
@@ -81,19 +103,25 @@
 			        //alert(circle.getPosition().x);
 			       // alert(circle.getPosition().y);
 			        circle.setDraggable(false)
-			  line.setPoints([circle2.getPosition().x, circle2.getPosition().y, circle.getPosition().x, circle.getPosition().y]);
+			  		line.setPoints([circle2.getPosition().x, circle2.getPosition().y, circle.getPosition().x, circle.getPosition().y]);
 
 			  		layer.add(line);
 			        layer.add(circle2);
 			        layer.draw();
-			        setInterval(function(){window.location="http://www.carlenglund.se/atlas"},3000);
-
+			        //setInterval(function(){window.location="http://www.carlenglund.se/atlas"},3000);
+			        //alert(simpleText.getPosition().x);
+			        //alert(simpleText.getPosition().y);
 
      			 });
 
 			     //Lägger till cirkeln till lagret och sedan lägger lagret i stagen
+			      layer.add(simpleText);
+			      
+			      layer.add(yoda);
 			      layer.add(circle);
 			      stage.add(layer);
+			  };
+			        imageObj.src = 'http://www.html5canvastutorials.com/demos/assets/yoda.jpg';
 
 			    </script>
 			
