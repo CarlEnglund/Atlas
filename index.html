@@ -22,6 +22,8 @@
 			        //Height: Höjd på stagen
 			        var w = $(".container").width()
 			        var h = $(".container").height()
+
+			        		       
 			        var stage = new Kinetic.Stage({
 			          container: "canvas",
 			          width: w,
@@ -43,6 +45,12 @@
 			        //Strokewidth: randstorlek
 			        //draggable: true/false
 			        //dragbounds: Vart man får dra den
+
+			        var h2 = $(".kineticjs-content").height()
+			         var w2 = $(".kineticjs-content").width()
+			         stage.setWidth(w2)
+			         stage.setHeight(h2)
+
 			        var circle = new Kinetic.Circle({
 			        	x: stage.getWidth() /2,
 			        	y: stage.getHeight() /2,
@@ -56,9 +64,17 @@
 			        	}
 			        });
 
+
+			        //var pic = $('.kineticjs-content').css('background-image')
+    				//var width = $(pic).width()
+    				//var height = $(pic).height()
+
+					//alert(width);
+			        //alert(h2);
+			        //alert(w2);	
 			         var circle2 = new Kinetic.Circle({
-			        	x: w /4,
-			        	y: h /4,
+			        	x: (w2/1500)*100,
+			        	y: (h2/1500)*100,
 			        	radius: 10,
 			        	fill: 'red',
 			        	stroke: 'black',
@@ -108,9 +124,12 @@
 			  		layer.add(line);
 			        layer.add(circle2);
 			        layer.draw();
-			        //setInterval(function(){window.location="http://www.carlenglund.se/atlas"},3000);
+			        setInterval(function(){window.location="http://www.carlenglund.se/atlas"},2000);
 			        //alert(simpleText.getPosition().x);
 			        //alert(simpleText.getPosition().y);
+
+			        //alert(circle2.getPosition().x)
+			        //alert(circle2.getPosition().y)
 
      			 });
 
@@ -119,9 +138,11 @@
 			      
 			      layer.add(yoda);
 			      layer.add(circle);
+
 			      stage.add(layer);
 			  };
 			        imageObj.src = 'http://www.html5canvastutorials.com/demos/assets/yoda.jpg';
+				
 
 			    </script>
 			
