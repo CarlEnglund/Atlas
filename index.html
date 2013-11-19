@@ -44,8 +44,14 @@
 			        stage.setWidth(w2)
 			        stage.setHeight(h2)
 
+
+			        //Grupp som grupperar nästa-knapp med nästa-text
+			        //Grupperar alltså rect3 och simpleText3
+			        var group = new Kinetic.Group({
+
+			        });
 			        
-			        //Skapar cirkelobjektet 
+			        //Skapar variabel med cirkelns egenskaper 
 			        //x: bestämmer startposition i x
 			        //y: bestämmer startposition i y
 			        //Radius: bestämmer radien
@@ -54,7 +60,7 @@
 			        //Strokewidth: randstorlek
 			        //draggable: true/false
 			        //dragbounds: Vart man får dra den
-			        var circle = new Kinetic.Circle({
+			        var circleCenter = {
 			        	x: stage.getWidth() /2,
 			        	y: stage.getHeight() /2,
 			        	radius: 5,
@@ -65,12 +71,16 @@
 			        	dragbounds: {
 			        		left: stage.getWidth(), right: stage.getHeight()
 			        	}
-			        });
+			        };
+
+			        //Skapar cirkelobjektet
+			        circle = new Kinetic.Circle(circleCenter)
 			      	
+			      	//Skapar variabel för svarscirkelns egenskaper
 			      	//För att kunna räkna ut var en punkt bör hamna på alla skärmar utgår jag från min skärm (UX32VD/Carl)
 			      	//window.innerWidth/Height är storleken på webbfönstret hos den lokala användaren. Detta delar en med 
 			      	//storleken på fönstret från UX32VD (1920 i bredd och 979 i höjd). Sedan multiplicerar man med punkten.
-			        var circle2 = new Kinetic.Circle({
+			        var circleAnswer = {
 			        	 x: ((window.innerWidth)/1920)*1108.6,
 			        	 y: ((window.innerHeight)/979)*351.6,
 			             radius: 1,
@@ -79,15 +89,24 @@
 			             strokeWidth: 4,
 			             dragbounds: {
 			        		left: stage.getWidth(), right: stage.getHeight(),
-			            }
-			        });
+			            },
+			            visible: false,
+			        };
+
+			        //Skapar cirkelobjektet
+			        circle2 = new Kinetic.Circle(circleAnswer)
 
 
-			        //Skapar en linje, denna ritas sedan i dragend funktionen längre ner
-			        var line = new Kinetic.Line({ 
+			        //Skapar en variabel för linjens egenskaper
+			        var lineDrawn = { 
 			            stroke: 'red',
 					    strokeWidth: 1,
-					});
+					    points: [0,0,0,0]
+					};
+
+
+					//Skapar en linje, denna ritas sedan i dragend funktionen längre ner
+					line = new Kinetic.Line(lineDrawn)
 
 			        //Skapar ett imageobjekt, i detta fall Yoda
 			        var imageObj = new Image();
@@ -121,7 +140,19 @@
 					      text: 'Svaret var Moskva',
 				          fontSize: 30,
 				          fontFamily: 'Calibri',
-			    	      fill: 'black'
+			    	      fill: 'black',
+			    	      visible: false
+					       
+				   });
+
+				   var simpleText3 = new Kinetic.Text({
+			              x: (window.innerHeight/100)*144,
+					      y: (window.innerHeight/100)*88,
+					      text: 'Nästa',
+				          fontSize: 30,
+				          fontFamily: 'Calibri',
+			    	      fill: 'black',
+			    	      visible: false
 					       
 				   });
 
@@ -146,6 +177,17 @@
 				         stroke: 'black',
 				         strokeWidth: 4,
 			       
+			      });
+
+			        var rect3 = new Kinetic.Rect({
+			      	x: (window.innerHeight/100)*140,
+			      	y: (window.innerHeight/100)*85,
+			      	width: (window.innerHeight)/5,
+			      	height: h2/10,
+			      	fill: 'lightblue',
+			      	stroke: 'black',
+			      	strokeWidth: 4,
+			      	visible: false
 			      });
 
 
@@ -178,12 +220,13 @@
 
 				  		line.setPoints([circle2.getPosition().x, circle2.getPosition().y, circle.getPosition().x, circle.getPosition().y]);
 				  		layer.add(line);
-				        layer.add(circle2);
 				        yoda.remove();
 				        //layer.add(rect);
 				        layer.add(simpleText2)
-
-				        
+				        circle2.setVisible(true)
+				        rect3.setVisible(true)
+				        simpleText3.setVisible(true)
+				        simpleText2.setVisible(true)
 
 				        circle.setFill('green');
 				        layer.draw();
@@ -192,13 +235,33 @@
 
      				 });
 
+			     	//Funktion som kopplas till 'nästa'knappen
+			     	//sätter circle, line och circle2 till utgångsvärdena
+			     	//sätter rect3, simpletext2 och simpletext3 till osynliga
+			     	group.on('click', function(){
+			     	alert('Nu kör vi en ny fråga! HAHAHA')
+			     	circle.setAttrs(circleCenter)
+			     	line.setAttrs(lineDrawn)
+			     	circle2.setAttrs(circleAnswer)
+			     	rect3.setVisible(false)
+				    simpleText2.setVisible(false)
+				    simpleText3.setVisible(false)
+
+			     	layer.draw()
+			     	});
+
 			     //Lägger till cirkeln till lagret och sedan lägger lagret i stagen
 			   	  //layer.add(rect);
 			      layer.add(rect2);
 			      layer.add(simpleText);
 			      layer.add(yoda);
 			      layer.add(circle);
-			      
+			      layer.add(circle2);
+
+			      group.add(rect3);
+			      group.add(simpleText3);
+			      layer.add(group);
+
 			      stage.add(layer);
 			 
 			        
