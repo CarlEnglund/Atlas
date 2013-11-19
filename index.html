@@ -146,7 +146,7 @@
 				   });
 
 				   var simpleText3 = new Kinetic.Text({
-			              x: (window.innerHeight/100)*144,
+			              x: (window.innerWidth/100)*84,
 					      y: (window.innerHeight/100)*88,
 					      text: 'Nästa',
 				          fontSize: 30,
@@ -180,7 +180,7 @@
 			      });
 
 			        var rect3 = new Kinetic.Rect({
-			      	x: (window.innerHeight/100)*140,
+			      	x: (window.innerWidth/100)*80,
 			      	y: (window.innerHeight/100)*85,
 			      	width: (window.innerHeight)/5,
 			      	height: h2/10,
@@ -238,7 +238,7 @@
 			     	//Funktion som kopplas till 'nästa'knappen
 			     	//sätter circle, line och circle2 till utgångsvärdena
 			     	//sätter rect3, simpletext2 och simpletext3 till osynliga
-			     	group.on('click', function(){
+			     	group.on('tap click', function(){
 			     	alert('Nu kör vi en ny fråga! HAHAHA')
 			     	circle.setAttrs(circleCenter)
 			     	line.setAttrs(lineDrawn)
