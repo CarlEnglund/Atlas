@@ -27,15 +27,18 @@
 			          height: window.innerHeight
 			        });
 
-			        //Skapar ett lager till stagen
+			        //Skapar lager i stagen
 			        var layer = new Kinetic.Layer();
+					var layer_start = new Kinetic.Layer();
 
 			        //Bakgrundslagret där bakgrundsbilden ligger
-			        var background_layer = new Kinetic.Layer();
+			        var layer_background = new Kinetic.Layer();
 
 			        //Lägger till lagret i stagen
-			        stage.add(background_layer);
+			        stage.add(layer_background);
 			        stage.add(layer);
+			        stage.add(layer_start);
+
 			        
 			       
 			        //Ändrar storleken på stagen. Verkar inte funka om jag tar bort detta, oklart varför..
@@ -44,12 +47,81 @@
 			        stage.setWidth(w2)
 			        stage.setHeight(h2)
 
+			        //Variabler som är procentsatser av window, gör det lätt att placera ut objekt
+			        var percent_width = window.innerWidth/100;
+			        var percent_height = window.innerHeight/100;
 
 			        //Grupp som grupperar nästa-knapp med nästa-text
-			        //Grupperar alltså rect3 och simpleText3
-			        var group = new Kinetic.Group({
+			        //Grupperar alltså rect_next och text_next_btn
+
+			        var group_start = new Kinetic.Group({});
+			        var group_next = new Kinetic.Group({});
+
+			        var rect_start = new Kinetic.Rect({
+				      	x: 0,
+				      	y: 0,
+				      	width: percent_width*100, 
+				      	height: percent_height*100,
+				      	fill: 'black',
+				      	opacity: 0.8
+
+			      });
+
+			        var rect_meny = new Kinetic.Rect({
+			        	x: percent_width*50,
+			        	y: percent_height*46,
+			        	width: percent_width*50,
+			        	height: percent_height*40,
+			        	fill: 'white'
 
 			        });
+
+			       	rect_meny.setOffset({
+			        	x: rect_meny.getWidth()/2,
+			        	y: rect_meny.getHeight()/2
+			        });
+
+			        //Menytext
+			        var text_quest_meny = new Kinetic.Text({
+			        	x: percent_width*30,
+			        	y: percent_height*30,
+			        	text: 'MENY',
+			        	fontSize: 50,
+			        	fontFamily: 'Calibri',
+			        	fill: 'black'
+			        });
+
+			        text_quest_meny.setOffset({
+			        	x: text_quest_meny.getWidth()/2
+			        });
+
+			        var rect_start_btn = new Kinetic.Rect({
+				      	x: percent_width*50,
+				      	y: percent_height*50,
+				      	width: percent_width*10,
+				      	height: percent_height*10,
+				      	fill: 'lightblue',
+			      	});
+
+			        rect_start_btn.setOffset({
+			        	x: rect_start_btn.getWidth()/2,
+			        	y: rect_start_btn.getHeight()/2
+			        })
+
+			        var text_quest_start_btn = new Kinetic.Text({
+			        	x: percent_width*50,
+			        	y: percent_height*50,
+			        	text:'Start',
+			        	fontSize: 30,
+			        	fontFamily: 'Calibri',
+			        	fill: 'black' 
+			        })
+
+			        text_quest_start_btn.setOffset({
+			        	x: text_quest_start_btn.getWidth()/2,
+			        	y: text_quest_start_btn.getHeight()/2
+			        })
+
 			        
 			        //Skapar variabel med cirkelns egenskaper 
 			        //x: bestämmer startposition i x
@@ -61,8 +133,8 @@
 			        //draggable: true/false
 			        //dragbounds: Vart man får dra den
 			        var circleCenter = {
-			        	x: stage.getWidth() /2,
-			        	y: stage.getHeight() /2,
+			        	x: percent_width*50,
+			        	y: percent_height*50,
 			        	radius: 5,
 			        	fill: 'red',
 			        	stroke: 'white',
@@ -113,21 +185,21 @@
 			        var imageObj = new Image();
 			        imageObj.onload = function() {
 				        var yoda = new Kinetic.Image({
-				          x: (window.innerHeight/100)*10,
-				          y: (window.innerHeight/100)*75,
+				          x: percent_width*6,
+				          y: percent_height*75,
 				          image: imageObj,
-				          width: (window.innerWidth/100)*10,
-				          height: (window.innerHeight/100)*20,
+				          width: percent_width*10,
+				          height: percent_height*20,
 				         
 				    });
 
 
 				   //Textobjekt.  Detta bör man kunna hämta via en databas
-				   var simpleText = new Kinetic.Text({
-					      x: (window.innerHeight/100)*30,
-					      y: (window.innerHeight/100)*92,
+				   var text_quest = new Kinetic.Text({
+					      x: percent_width*20,
+					      y: percent_height*92,
 					      text: 'Vart ligger Rysslands huvudstad?',
-				          fontSize: (window.innerHeight/100)*4,
+				          fontSize: percent_height*3,
 				          fontFamily: 'Calibri',
 			    	      fill: 'white'
 					       
@@ -135,43 +207,53 @@
 
 
 				   //Textobjekt. Detta bör man kunna hämta via en databas
-				   var simpleText2 = new Kinetic.Text({
-			              x: (window.innerHeight/100)*90,
-					      y: (window.innerHeight/100)*92,
+				   var text_ans = new Kinetic.Text({
+			              x: percent_width*50,
+					      y: percent_height*92,
 					      text: 'Rysslands huvudstad heter Moskva',
-				          fontSize: (window.innerHeight/100)*4,
+				          fontSize: percent_height*3,
 				          fontFamily: 'Calibri',
 			    	      fill: 'white',
 			    	      visible: false
 					       
 				   });
 
-				   var simpleText3 = new Kinetic.Text({
-			              x: (window.innerWidth/100)*84,
-					      y: (window.innerHeight/100)*88,
+				//
+			    var rect_next = new Kinetic.Rect({
+			      	x: percent_width*85,
+			      	y: percent_height*94,
+			      	width: percent_width*7,
+			      	height: percent_height*7,
+			      	fill: 'lightblue',
+			      	visible: false
+			      });
+
+			    rect_next.setOffset({
+			    	x: rect_next.getWidth()/2, 
+			    	y: rect_next.getHeight()/2
+			    })
+
+				   var text_next_btn = new Kinetic.Text({
+			              x: percent_width*85,
+					      y: percent_height*94,
 					      text: 'Nästa',
-				          fontSize: 30,
+				          fontSize: percent_height*3,
 				          fontFamily: 'Calibri',
 			    	      fill: 'black',
 			    	      visible: false				       
 				   });
 
-				   //Rektangelobjekt
-			      var rect = new Kinetic.Rect({
-				         x: stage.getWidth() /3,
-				         y: stage.getHeight() /4,
-				         width: 600,
-				         height: 400,
-				         fill: 'white',
-				         stroke: 'black',
-				         strokeWidth: 4
-			      });
+				   text_next_btn.setOffset({
+				   	x: text_next_btn.getWidth()/2,
+				   	y: text_next_btn.getHeight()/2
+				   })
+
 
 			      //Rektangelobjekt svarsbaren
-			      var rect2 = new Kinetic.Rect({
+			      var rect_bar = new Kinetic.Rect({
 				         x: 0,
-				         y: (window.innerHeight/100)*89,
-				         width: (window.outerWidth),
+				         y: percent_height*89,
+				         width: percent_width*100,
 				         height: h2/8,
 				         fill: 'black',
 				         stroke: 'black',
@@ -181,18 +263,9 @@
 			       
 			      });
 
-			        var rect3 = new Kinetic.Rect({
-			      	x: (window.innerWidth/100)*80,
-			      	y: (window.innerHeight/100)*85,
-			      	width: (window.innerHeight)/5,
-			      	height: h2/10,
-			      	fill: 'lightblue',
-			      	stroke: 'black',
-			      	strokeWidth: 4,
-			      	visible: false
-			      });
 
 
+			      
 			      //Detta är nödvändigt för att få punkten på samma ställe över alla plattformar
 			      //Man sätter skalningen på bakgrunden genom width och height, denna sätts alltid
 			      //till fönsterstorleken på det aktuella fönstret. Då kan man få ut en skala som
@@ -203,12 +276,12 @@
 			            x: 0,
 			            y: 0,
 			            image: canvasBackgroundImage,
-			            width: window.innerWidth,
-			            height: window.innerHeight,
+			            width: percent_width*100,
+			            height: percent_height*100,
 			            opacity: 1.0
 				        });
-				        background_layer.add(backgroundImage);
-        				background_layer.draw();
+				        layer_background.add(backgroundImage);
+        				layer_background.draw();
 				        
 				    };
 				    canvasBackgroundImage.src = ('http://www.carlenglund.se/atlas/lol.png'); //Location of our background
@@ -225,14 +298,15 @@
 				        layer.add(circle2);
 				        //yoda.remove(); YODA VILL VARA KVAR
 
-				        //layer.add(rect);
-				        layer.add(simpleText2)
+				        layer.add(text_ans)
 				        circle2.setVisible(true)
-				        rect3.setVisible(true)
-				        simpleText3.setVisible(true)
-				        simpleText2.setVisible(true)
+				        rect_next.setVisible(true)
+				        text_next_btn.setVisible(true)
+				        text_ans.setVisible(true)
 
 				        circle.setFill('green');
+				        layer.add(circle);
+
 				        layer.draw();
 			        
 			        //setInterval(function(){window.location="http://www.carlenglund.se/atlas"},2000);
@@ -241,32 +315,49 @@
 
 			     	//Funktion som kopplas till 'nästa'knappen
 			     	//sätter circle, line och circle2 till utgångsvärdena
-			     	//sätter rect3, simpletext2 och simpletext3 till osynliga
-			     	group.on('tap click', function(){
+			     	//sätter rect_next, text_ans och text_next_btn till osynliga
+			     	group_next.on('tap click', function(){
 			     	alert('Nu kör vi en ny fråga! HAHAHA')
 			     	circle.setAttrs(circleCenter)
 			     	line.setAttrs(lineDrawn)
 			     	circle2.setAttrs(circleAnswer)
-			     	rect3.setVisible(false)
-				    simpleText2.setVisible(false)
-				    simpleText3.setVisible(false)
+			     	rect_next.setVisible(false)
+				    text_ans.setVisible(false)
+				    text_next_btn.setVisible(false)
 
-			     	layer.draw()
+			     	layer.draw();
+			     	});
+
+			     	group_start.on('tap click', function(){
+			     		layer_start.clear();
 			     	});
 
 			     //Lägger till cirkeln till lagret och sedan lägger lagret i stagen
 			   	  //layer.add(rect);
-			      layer.add(rect2);
-			      layer.add(simpleText);
+			      layer.add(rect_bar);
+			      layer.add(text_quest);
 			      layer.add(yoda);
 			      layer.add(circle);
 			      layer.add(circle2);
 
-			      group.add(rect3);
-			      group.add(simpleText3);
-			      layer.add(group);
+			      group_next.add(rect_next);
+			      group_next.add(text_next_btn);
+			      layer.add(group_next);
 
-			      stage.add(layer);
+			     group_start.add(rect_start_btn);
+			     group_start.add(text_quest_start_btn);
+			      
+			      	
+			     layer_start.add(rect_start);
+			     layer_start.add(rect_meny);
+			     layer_start.add(text_quest_meny);
+			     layer_start.add(group_start);
+			     layer_start.draw();
+
+			      
+
+			     stage.add(layer);
+			     stage.add(layer_start);
 			 
 			        
 				 }; imageObj.src = 'http://cloud.lomography.com/477/576/40/02c075b18ecee79a47211e3eb1aee9d566d187.jpg';
