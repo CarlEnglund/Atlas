@@ -185,11 +185,11 @@
 			        var imageObj = new Image();
 			        imageObj.onload = function() {
 				        var yoda = new Kinetic.Image({
-				          x: percent_width*6,
-				          y: percent_height*75,
+				          x: percent_width*2,
+				          y: percent_height*67,
 				          image: imageObj,
-				          width: percent_width*10,
-				          height: percent_height*20,
+				          width: percent_width*15,
+				          height: percent_height*30,
 				         
 				    });
 
@@ -197,8 +197,8 @@
 				   //Textobjekt.  Detta bör man kunna hämta via en databas
 				   var text_quest = new Kinetic.Text({
 					      x: percent_width*20,
-					      y: percent_height*92,
-					      text: 'Vart ligger Rysslands huvudstad?',
+					      y: percent_height*91,
+					      text: 'Författaren till klassikern "Brott och straff" är född \n i hans fosterlands huvudstad, vart ligger denna huvudstad?',
 				          fontSize: percent_height*3,
 				          fontFamily: 'Calibri',
 			    	      fill: 'white'
@@ -208,12 +208,12 @@
 
 				   //Textobjekt. Detta bör man kunna hämta via en databas
 				   var text_ans = new Kinetic.Text({
-			              x: percent_width*50,
+			              x: percent_width*7,
 					      y: percent_height*92,
-					      text: 'Rysslands huvudstad heter Moskva',
+					      text: 'Moskva',
 				          fontSize: percent_height*3,
 				          fontFamily: 'Calibri',
-			    	      fill: 'white',
+			    	      fill: 'darkgray',
 			    	      visible: false
 					       
 				   });
