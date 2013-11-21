@@ -59,8 +59,8 @@
 			        	y: stage.getHeight() /2,
 			        	radius: 5,
 			        	fill: 'red',
-			        	stroke: 'black',
-			        	strokeWidth: 4,
+			        	stroke: 'white',
+			        	strokeWidth: 2,
 			        	draggable: true,
 			        	dragbounds: {
 			        		left: stage.getWidth(), right: stage.getHeight()
@@ -69,14 +69,14 @@
 			      	
 			      	//För att kunna räkna ut var en punkt bör hamna på alla skärmar utgår jag från min skärm (UX32VD/Carl)
 			      	//window.innerWidth/Height är storleken på webbfönstret hos den lokala användaren. Detta delar en med 
-			      	//storleken på fönstret från UX32VD (1920 i bredd och 979 i höjd). Sedan multiplicerar man med punkten.
+			      	//storleken på fönstret från UX32VD (1920 i bredd och 979 i höjd). Sedan multipliceras det med punkten.
 			        var circle2 = new Kinetic.Circle({
 			        	 x: ((window.innerWidth)/1920)*1108.6,
 			        	 y: ((window.innerHeight)/979)*351.6,
 			             radius: 1,
 			             fill: 'red',
-			             stroke: 'black',
-			             strokeWidth: 4,
+			             stroke: 'white',
+			             strokeWidth: 2,
 			             dragbounds: {
 			        		left: stage.getWidth(), right: stage.getHeight(),
 			            }
@@ -93,35 +93,35 @@
 			        var imageObj = new Image();
 			        imageObj.onload = function() {
 				        var yoda = new Kinetic.Image({
-				          x: stage.getWidth() /4,
-				          y: stage.getWidth() /4,
+				          x: (window.innerHeight/100)*10,
+				          y: (window.innerHeight/100)*75,
 				          image: imageObj,
-				          width: 106,
-				          height: 118,
+				          width: (window.innerWidth/100)*10,
+				          height: (window.innerHeight/100)*20,
 				         
 				    });
 
 
 				   //Textobjekt.  Detta bör man kunna hämta via en databas
 				   var simpleText = new Kinetic.Text({
-					      x: (window.innerHeight/100)*20,
-					      y: (window.innerHeight/100)*90,
+					      x: (window.innerHeight/100)*30,
+					      y: (window.innerHeight/100)*92,
 					      text: 'Vart ligger Rysslands huvudstad?',
-				          fontSize: 30,
+				          fontSize: (window.innerHeight/100)*4,
 				          fontFamily: 'Calibri',
-			    	      fill: 'black'
+			    	      fill: 'white'
 					       
 					});
 
 
 				   //Textobjekt. Detta bör man kunna hämta via en databas
 				   var simpleText2 = new Kinetic.Text({
-			              x: (window.innerHeight/100)*20,
-					      y: (window.innerHeight/100)*95,
-					      text: 'Svaret var Moskva',
-				          fontSize: 30,
+			              x: (window.innerHeight/100)*90,
+					      y: (window.innerHeight/100)*92,
+					      text: 'Rysslands huvudstad heter Moskva',
+				          fontSize: (window.innerHeight/100)*4,
 				          fontFamily: 'Calibri',
-			    	      fill: 'black'
+			    	      fill: 'white'
 					       
 				   });
 
@@ -136,15 +136,17 @@
 				         strokeWidth: 4
 			      });
 
-			      //Rektangelobjekt
+			      //Rektangelobjekt svarsbaren
 			      var rect2 = new Kinetic.Rect({
-				         x: (window.innerHeight/100)*20,
-				         y: (window.innerHeight/100)*90,
-				         width: (window.innerHeight),
-				         height: h2/10,
-				         fill: 'white',
+				         x: 0,
+				         y: (window.innerHeight/100)*89,
+				         width: (window.outerWidth),
+				         height: h2/8,
+				         fill: 'black',
 				         stroke: 'black',
 				         strokeWidth: 4,
+				         opacity: 0.5
+
 			       
 			      });
 
@@ -179,7 +181,7 @@
 				  		line.setPoints([circle2.getPosition().x, circle2.getPosition().y, circle.getPosition().x, circle.getPosition().y]);
 				  		layer.add(line);
 				        layer.add(circle2);
-				        yoda.remove();
+				        //yoda.remove(); YODA VILL VARA KVAR
 				        //layer.add(rect);
 				        layer.add(simpleText2)
 
@@ -202,7 +204,7 @@
 			      stage.add(layer);
 			 
 			        
-				 }; imageObj.src = 'http://www.html5canvastutorials.com/demos/assets/yoda.jpg';
+				 }; imageObj.src = 'http://cloud.lomography.com/477/576/40/02c075b18ecee79a47211e3eb1aee9d566d187.jpg';
 
 			    </script>
 			
