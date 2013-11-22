@@ -1,4 +1,4 @@
-var hej = 1;
+/*var hej = 1;
 $(document).ready(function() {
 $.getJSON("database.php", function(data){
   // vad du vill göra här, allt retuneras i data-variabeln
@@ -6,7 +6,10 @@ $.getJSON("database.php", function(data){
   hej = data.lol
 });
 alert(hej);
-});
+});*/
+
+              var percent_width = window.innerWidth/100;
+              var percent_height = window.innerHeight/100;
 
 	 simpleText = {
 					      x: (window.innerHeight/100)*20,
@@ -37,8 +40,8 @@ alert(hej);
     };
 
     var rect_start_btn_layout =  {
-      	x: percent_width*50,
-      	y: percent_height*50,
+      	x: percent_width*45,
+      	y: percent_height*45,
       	width: percent_width*10,
       	height: percent_height*10,
       	fill: 'lightblue',
@@ -61,7 +64,7 @@ alert(hej);
          stroke: 'white',
          strokeWidth: 2,
          dragbounds: {
-    		left: stage.getWidth(), right: stage.getHeight(),
+    		left: window.innerWidth, right: window.innerHeight,
         },
         visible: false,
     };
@@ -84,7 +87,7 @@ alert(hej);
     	strokeWidth: 2,
     	draggable: true,
     	dragbounds: {
-    		left: stage.getWidth(), right: stage.getHeight()
+    		left: window.innerWidth, right: window.innerHeight
     	}
     };
 
@@ -97,7 +100,7 @@ alert(hej);
 		fill: 'white'     
 		};
 
-	var text_ans_layout{
+	var text_ans_layout = {
           x: percent_width*7,
 	      y: percent_height*92,
 	      text: 'Moskva',
@@ -130,7 +133,7 @@ alert(hej);
          x: 0,
          y: percent_height*89,
          width: percent_width*100,
-         height: h2/8,
+         height: window.innerHeight/8,
          fill: 'black',
          stroke: 'black',
          strokeWidth: 4,

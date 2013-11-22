@@ -41,13 +41,7 @@
 			        stage.add(layer);
 			        stage.add(layer_start);
 
-			        
-			       
-			        //Ändrar storleken på stagen. Verkar inte funka om jag tar bort detta, oklart varför..
-			        var h2 = $(".kineticjs-content").height()
-			        var w2 = $(".kineticjs-content").width()
-			        stage.setWidth(w2)
-			        stage.setHeight(h2)
+			    			       
 
 			        //Variabler som är procentsatser av window, gör det lätt att placera ut objekt
 			        var percent_width = window.innerWidth/100;
@@ -59,7 +53,7 @@
 			        var group_start = new Kinetic.Group({});
 			        var group_next = new Kinetic.Group({});
 
-			        rect_start = new Kinetic.Rect(rect_start_layout)
+			        rect_start = new Kinetic.Rect(rect_start_btn_layout)
 
 			        var rect_start_look = new Kinetic.Rect({
 				      	x: 0,
@@ -83,7 +77,7 @@
 			        text_quest_meny = new Kinetic.Text(text_quest_meny_layout)  
 
 			        text_quest_meny.setOffset({
-			        	x: text_quest_meny.getWidth()/2
+			        	x: text_quest_meny.getWidth()/2,
 			        });
 
 			        rect_start_btn = new Kinetic.Text(rect_start_btn_layout)
@@ -179,7 +173,7 @@
 			            image: canvasBackgroundImage,
 			            width: percent_width*100,
 			            height: percent_height*100,
-			            opacity: 1.0
+			            opacity: 0.6
 				        });
 				        layer_background.add(backgroundImage);
         				layer_background.draw();
@@ -219,7 +213,7 @@
 			     	//sätter rect_next, text_ans och text_next_btn till osynliga
 			     	group_next.on('tap click', function(){
 			     	alert('Nu kör vi en ny fråga! HAHAHA')
-			     	circle.setAttrs(circleCenter)
+			     	circle.setAttrs(circleCenter_layout)
 			     	line.setAttrs(lineDrawn)
 			     	circle2.setAttrs(circleAnswer)
 			     	rect_next.setVisible(false)
@@ -246,10 +240,11 @@
 			      layer.add(group_next);
 
 			     group_start.add(rect_start_btn);
+			     group_start.add(rect_start);
 			     group_start.add(text_quest_start_btn);
-			      
+			     
 			      	
-			     layer_start.add(rect_start);
+			     //layer_start.add(rect_start);
 			     layer_start.add(rect_meny);
 			     layer_start.add(text_quest_meny);
 			     layer_start.add(group_start);
