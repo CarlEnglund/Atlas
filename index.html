@@ -173,7 +173,7 @@
 			            image: canvasBackgroundImage,
 			            width: percent_width*100,
 			            height: percent_height*100,
-			            opacity: 0.6
+			            opacity: 1.0
 				        });
 				        layer_background.add(backgroundImage);
         				layer_background.draw();
@@ -193,16 +193,32 @@
 				        layer.add(circle2);
 				        //yoda.remove(); YODA VILL VARA KVAR
 
-				        layer.add(text_ans)
-				        circle2.setVisible(true)
-				        rect_next.setVisible(true)
-				        text_next_btn.setVisible(true)
-				        text_ans.setVisible(true)
+
+				        //Räknar ut poängen, 1000 - längden på line
+				        var points = 1000 - Math.sqrt(Math.pow((circle2.getPosition().x - circle.getPosition().x),2) + Math.pow((circle2.getPosition().y - circle.getPosition().y),2));
+
+				        var text_points = new Kinetic.Text({
+					      x: percent_width*66,
+					      y: percent_height*91,
+					      text: points.toFixed(0) + ' poäng',
+				          fontSize: percent_height*3,
+				          fontFamily: 'Calibri',
+			    	      fill: 'white',
+			    	      visible: true
+			    	  	});
+
+				        layer.add(text_points);
+				        layer.add(text_ans);
+				        circle2.setVisible(true);
+				        rect_next.setVisible(true);
+				        text_next_btn.setVisible(true);
+				        text_ans.setVisible(true);
 
 				        circle.setFill('green');
 				        layer.add(circle);
 
 				        layer.draw();
+				        text_points.setVisible(false);
 			        
 			        //setInterval(function(){window.location="http://www.carlenglund.se/atlas"},2000);
 
@@ -212,7 +228,6 @@
 			     	//sätter circle, line och circle2 till utgångsvärdena
 			     	//sätter rect_next, text_ans och text_next_btn till osynliga
 			     	group_next.on('tap click', function(){
-			     	alert('Nu kör vi en ny fråga! HAHAHA')
 			     	circle.setAttrs(circleCenter_layout)
 			     	line.setAttrs(lineDrawn)
 			     	circle2.setAttrs(circleAnswer)
@@ -244,7 +259,7 @@
 			     group_start.add(text_quest_start_btn);
 			     
 			      	
-			     //layer_start.add(rect_start);
+			     layer_start.add(rect_start_look);
 			     layer_start.add(rect_meny);
 			     layer_start.add(text_quest_meny);
 			     layer_start.add(group_start);
