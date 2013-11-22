@@ -36,14 +36,17 @@ alert(hej);
     	text: 'MENY',
     	fontSize: 50,
     	fontFamily: 'Calibri',
+      offsetX: (percent_width*50)/2,
     	fill: 'black'
     };
 
     var rect_start_btn_layout =  {
-      	x: percent_width*45,
-      	y: percent_height*45,
+      	x: percent_width*50,
+      	y: percent_height*50,
       	width: percent_width*10,
       	height: percent_height*10,
+        offsetX:  (percent_width*10)/2,
+        offsetY: (percent_height*10)/2,
       	fill: 'lightblue',
   	};
 

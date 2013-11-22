@@ -39,9 +39,7 @@
 			        //Lägger till lagret i stagen
 			        stage.add(layer_background);
 			        stage.add(layer);
-			        stage.add(layer_start);
-
-			    			       
+			        stage.add(layer_start);       
 
 			        //Variabler som är procentsatser av window, gör det lätt att placera ut objekt
 			        var percent_width = window.innerWidth/100;
@@ -83,13 +81,13 @@
 			        rect_start_btn = new Kinetic.Text(rect_start_btn_layout)
 
 			       /* rect_start_btn.setOffset({
-			        	x: rect_start_btn.getWidth()/2,
-			        	y: rect_start_btn.getHeight()/2
-			        })
-*/
+			        	x: rect_start_btn.getWidth()/4,
+			        	y: rect_start_btn.getHeight()/4
+			        })*/
+
 			        text_quest_start_btn = new Kinetic.Text(text_quest_start_btn_layout)
 
-			        text_quest_start_btn.setOffset({
+			       	 text_quest_start_btn.setOffset({
 			        	x: text_quest_start_btn.getWidth()/2,
 			        	y: text_quest_start_btn.getHeight()/2
 			        })
@@ -148,6 +146,8 @@
 			    	x: rect_next.getWidth()/2, 
 			    	y: rect_next.getHeight()/2
 			    })
+
+
 
 			    text_next_btn = new Kinetic.Text(text_next_btn_layout)
 
