@@ -19,6 +19,8 @@
 			<!--<div class="help"><p>Nånting</p></div>-->
 			 <script defer="defer">
 
+			        var sound_btn = new Audio('');
+
 			        //Skapar stagen
 			        //Container: Bestämmer vart canvasen ska lägga sig
 			        //Width: Storlek på stagen
@@ -235,10 +237,13 @@
 				    text_ans.setVisible(false)
 				    text_next_btn.setVisible(false)
 
+				    sound_btn.play();
+
 			     	layer.draw();
 			     	});
 
 			     	group_start.on('tap click', function(){
+			     		sound_btn.play();
 			     		layer_start.clear();
 			     	});
 
