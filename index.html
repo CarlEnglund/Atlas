@@ -196,8 +196,16 @@
 				        //yoda.remove(); YODA VILL VARA KVAR
 
 
-				        //Räknar ut poängen, 1000 - längden på line
-				        var points = 1000 - Math.sqrt(Math.pow((circle2.getPosition().x - circle.getPosition().x),2) + Math.pow((circle2.getPosition().y - circle.getPosition().y),2));
+				        //Räknar ut poängen, 700 - skalad längd^2
+				        var points = 700 - Math.pow((Math.sqrt(Math.pow((circle2.getPosition().x - circle.getPosition().x)*100/window.innerWidth,2) 
+				        	+ Math.pow((circle2.getPosition().y - circle.getPosition().y)*100/window.innerHeight,2))),2);
+
+				        //Om negativ poäng, så får användaren ingen poäng
+				        if(points<0)
+				        	points = 1; //Tröstpoäng
+				        //BONUS om användaren kommer riktigt nära, 1000 är maxpoäng
+				        else if(points>675)
+				        	points += 300;
 
 				        var text_points = new Kinetic.Text({
 					      x: percent_width*66,
