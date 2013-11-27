@@ -125,7 +125,7 @@ var text_ans_layout = {
 };
 
 var rect_next_layout = {
-    x: percent_width*85,
+    x: percent_width*95,
     y: percent_height*94,
     width: percent_width*7,
     height: percent_height*7,
@@ -134,7 +134,7 @@ var rect_next_layout = {
 };
 
 var text_next_btn_layout = {
-    x: percent_width*85,
+    x: percent_width*95,
     y: percent_height*94,
     text: 'Nästa',
     fontSize: percent_height*3,
@@ -173,6 +173,28 @@ var rect_quest_fill_layout = {
     visible: false
 
 };
+
+var text_starTotal_layout = {
+    x: percent_width*87,
+    y: percent_height*93,
+    text: 'x',
+    fontSize: percent_height*3,
+    fontFamily: 'Calibri',
+    fill: 'white',
+    visible: true                     
+};
+
+var starTotal_layout = {
+      x: percent_width*85,
+      y: percent_height*94,
+      numPoints: 5,
+      innerRadius: 10,
+      outerRadius: 20,
+      fill: 'yellow',
+      stroke: '#ffcb00',
+      strokeWidth: 2
+};
+
 
 
 

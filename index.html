@@ -187,6 +187,9 @@
 			 		   //fyllningen till frågeräknargrafiken
 			 		   rect_quest_fill = new Kinetic.Rect(rect_quest_fill_layout)
 
+			 		   starTotal = new Kinetic.Star(starTotal_layout);
+			 		   text_starTotal = new Kinetic.Text(text_starTotal_layout);
+
 				      	//Detta är nödvändigt för att få punkten på samma ställe över alla plattformar
 				      	//Man sätter skalningen på bakgrunden genom width och height, denna sätts alltid
 				      	//till fönsterstorleken på det aktuella fönstret. Då kan man få ut en skala som
@@ -206,6 +209,8 @@
 					    };
 					    canvasBackgroundImage.src = ('http://www.carlenglund.se/atlas/lol.png'); //Location of our background
 				       
+				       	//Poängsumma för dragend
+				       	sum = 0;
 				     	//Kollar position när man slutar dra
 				     	//Skriver ut positionen i x/y-led
 				     	//Sätter punkterna linjen ska gå emellan
@@ -241,10 +246,15 @@
 				    	    	visible: true
 				    	  	});
 					        
+					        //Summerar varje frågas poäng till en totalpott. Skriver ut denna vid stjärnan.
+							sum = sum + points;
+							text_starTotal.setText('x' + sum.toFixed(0));
+
 					        //Fyller frågeräknargrafiken med i många femtedelar
 					        rect_quest_fill.setVisible(true)
 				  			rect_quest_fill.setWidth(percent_width*(7/5)*(i+1)) 
-			   	  			
+							
+							layer.add(text_starTotal);			   	  
 			   	  			layer.add(rect_quest_count)
 				    		layer.add(rect_quest_fill);
 					        layer.add(text_points);
@@ -307,6 +317,8 @@
 					    layer.add(polaroidImg);
 					    layer.add(circle);
 					    layer.add(circle2);
+					    layer.add(starTotal);
+					    layer.add(text_starTotal);
 
 				      	group_next.add(rect_next);
 				      	group_next.add(text_next_btn);
