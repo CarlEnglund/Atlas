@@ -147,9 +147,32 @@ var rect_bar_layout = {
     x: 0,
     y: percent_height*89,
     width: percent_width*100,
-    height: window.innerHeight/8,
+    height: percent_height*13,
     fill: 'black',
     stroke: 'black',
     strokeWidth: 4,
     opacity: 0.5
 };
+
+var rect_quest_count_layout = {
+    x: percent_width*66,
+    y: percent_height*94,
+    width: percent_width*7,
+    height: percent_height*4,
+    stroke: 'white',
+    strokeWidth: 1,
+
+};
+
+var rect_quest_fill_layout = {
+    x: percent_width*66,
+    y: percent_height*94,
+    width: 0,
+    height: percent_height*4,
+    fill: 'green',
+    visible: false
+
+};
+
+
+

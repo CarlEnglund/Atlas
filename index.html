@@ -181,7 +181,12 @@
 					    //Rektangelobjekt svarsbaren
 					    rect_bar = new Kinetic.Rect(rect_bar_layout)
 
-				      
+				      	//Bakgrunden till frågeräknargrafiken
+			 		   rect_quest_count = new Kinetic.Rect(rect_quest_count_layout)
+
+			 		   //fyllningen till frågeräknargrafiken
+			 		   rect_quest_fill = new Kinetic.Rect(rect_quest_fill_layout)
+
 				      	//Detta är nödvändigt för att få punkten på samma ställe över alla plattformar
 				      	//Man sätter skalningen på bakgrunden genom width och height, denna sätts alltid
 				      	//till fönsterstorleken på det aktuella fönstret. Då kan man få ut en skala som
@@ -235,7 +240,13 @@
 				    	    	fill: 'white',
 				    	    	visible: true
 				    	  	});
-
+					        
+					        //Fyller frågeräknargrafiken med i många femtedelar
+					        rect_quest_fill.setVisible(true)
+				  			rect_quest_fill.setWidth(percent_width*(7/5)*(i+1)) 
+			   	  			
+			   	  			layer.add(rect_quest_count)
+				    		layer.add(rect_quest_fill);
 					        layer.add(text_points);
 					        layer.add(text_ans);
 					        circle2.setVisible(true);
@@ -263,11 +274,13 @@
 					     	rect_next.setVisible(false)
 						    text_ans.setVisible(false)
 						    text_next_btn.setVisible(false)
+						    circle2.setVisible(false)
 
 						    i++;
 						    text_quest.setText("hej" + i);
-						    circle2.setX(array[i].coordx)
-					     	circle2.setY(array[i].coordy)
+						    //Kommentera av detta om du har tillgång till DB
+						    //circle2.setX(array[i].coordx)
+					     	//circle2.setY(array[i].coordy)
 
 
 						    sound_btn.play();
@@ -289,6 +302,7 @@
 				     	//Lägger till cirkeln till lagret och sedan lägger lagret i stagen
 				   	  	//layer.add(rect);
 					    layer.add(rect_bar);
+			   	  		layer.add(rect_quest_count)
 					    layer.add(text_quest);
 					    layer.add(polaroidImg);
 					    layer.add(circle);
