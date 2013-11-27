@@ -19,6 +19,7 @@
 			<!--<div class="help"><p>Nånting</p></div>-->
 			 <script defer="defer">
 
+			 		var i = -1;
 			        //Skapar stagen
 			        //Container: Bestämmer vart canvasen ska lägga sig
 			        //Width: Storlek på stagen
@@ -195,7 +196,16 @@
 
 
 				        //Räknar ut poängen, 1000 - längden på line
-				        var points = 1000 - Math.sqrt(Math.pow((circle2.getPosition().x - circle.getPosition().x),2) + Math.pow((circle2.getPosition().y - circle.getPosition().y),2));
+				         //Räknar ut poängen, 700 - skalad längd^2
+		                 var points = 700 - Math.pow((Math.sqrt(Math.pow((circle2.getPosition().x - circle.getPosition().x)*100/window.innerWidth,2) 
+		                   + Math.pow((circle2.getPosition().y - circle.getPosition().y)*100/window.innerHeight,2))),2);
+		 
+		                 //Om negativ poäng, så får användaren ingen poäng
+		                 if(points<0)
+		                   points = 1; //Tröstpoäng
+		                 //BONUS om användaren kommer riktigt nära, 1000 är maxpoäng
+		                 else if(points>675)
+		                   points += 300;
 
 				        var text_points = new Kinetic.Text({
 					      x: percent_width*66,
@@ -230,16 +240,24 @@
 			     	group_next.on('tap click', function(){
 			     	circle.setAttrs(circleCenter_layout)
 			     	line.setAttrs(lineDrawn)
-			     	circle2.setAttrs(circleAnswer)
+			     	//circle2.setAttrs(circleAnswer)
 			     	rect_next.setVisible(false)
 				    text_ans.setVisible(false)
 				    text_next_btn.setVisible(false)
-
+				    i++;
+				    text_quest.setText("hej" + i);
+				    circle2.setX(array[i].coordx)
+			     	circle2.setY(array[i].coordy)
 			     	layer.draw();
 			     	});
 
 			     	group_start.on('tap click', function(){
 			     		layer_start.clear();
+			     		i++;
+			     		text_quest.setText("hej" + i)
+			     		//circle2.setX(array[i].coordx)
+			     		//circle2.setY(array[i].coordy)
+			     		layer.draw();
 			     	});
 
 			     //Lägger till cirkeln till lagret och sedan lägger lagret i stagen

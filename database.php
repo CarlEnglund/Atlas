@@ -1,27 +1,31 @@
 <?php
+header("Content-type: application/json");
+mysql_connect("atlas-170072.mysql.binero.se", "170072_ru97167", "") or die("lol" . mysql_error()); 
 
-$con=mysqli_connect("localhost","root","","atlas");
+mysql_select_db("170072-atlas") or die(mysql_error()); 
 
-// Check connection
-if (mysqli_connect_errno($con))
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-
-
-$result = mysqli_query($con,"SELECT * FROM questions");
-while($r[]=mysqli_fetch_array($result));
-$arrlength=count($r);
-$r = array("lol" => "bajs");
-$js_array = json_encode($r);
+$data = mysql_query("SELECT * FROM data") 
+or die(mysql_error()); 
 
 
-//echo "<pre>";
-// Prints $r as array 
-//echo ($r[0][1]);
-//echo "</pre>";
+$user = array();
+ while ($Row = mysql_fetch_array($data)) 
+{ 
+$user[] =array(  
+'id'=>$Row['id'], 
+'q'=>$Row['question'],
+'a'=>$Row['answer'],
+'coordx'=>$Row['coordx'],
+'coordy'=>$Row['coordy']
+	);
+} 
 
-echo $js_array;
-	
-mysqli_close($con);
+function encode_items(&$item, $key)
+{
+	$item = utf8_encode($item);
+}
+array_walk_recursive($user, 'encode_items');
+$json = json_encode($user) or die("An error was created");
+
+echo $json;
 ?>

@@ -1,12 +1,23 @@
-/*var hej = 1;
-$(document).ready(function() {
-$.getJSON("database.php", function(data){
-  // vad du vill göra här, allt retuneras i data-variabeln
-  console.log(data.lol);
-  hej = data.lol
-});
-alert(hej);
-});*/
+  /*$(document).ready(function() {
+  $.ajax({
+      url: 'database.php',
+      dataType: 'json',
+      success: function(data, textStatus, jqXHR) {
+          callback(data);
+          console.log(data);
+          console.log("success");
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+          console.log(errorThrown);
+      }
+  });
+  });
+
+   function callback(arr)
+  {
+   array = arr;
+   console.log(array);
+  }*/
 
               var percent_width = window.innerWidth/100;
               var percent_height = window.innerHeight/100;
