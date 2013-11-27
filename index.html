@@ -9,7 +9,7 @@
 </head>
 <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.7.4.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="database.js" type="text/javascript"></script>
+
 
 	<body>
 		<div class="container">		
@@ -18,299 +18,314 @@
 			<div id="canvas"></div>
 			<!--<div class="help"><p>Nånting</p></div>-->
 			 <script defer="defer">
+			 		//Laddar in bilder från sökväg till array
+			 		function loadImages(sources, callback) {
+			 			var images = {};
+			 			var loadedImages = 0;
+			 			var numImages = 0;
+			 			for (var src in sources){
+			 				numImages++;
+			 			}
+			 			for(var src in sources) {
+			 				images[src] = new Image();
+			 				images[src].onload = function() {
+			 					if(++loadedImages >= numImages) {
+			 						callback(images);
+			 					}
+			 				};
+			 				images[src].src = sources[src]
+			 			}
+			 		}
 
+			 		//Laddar in
+			 		function drawImages(images) {
+				 		var i = -1;
 
-			 		var i = -1;
+				        var sound_btn = new Audio('');
 
-			        var sound_btn = new Audio('');
-
-			        //Skapar stagen
-			        //Container: Bestämmer vart canvasen ska lägga sig
-			        //Width: Storlek på stagen
-			        //Height: Höjd på stagen        		       
-			        var stage = new Kinetic.Stage({
-			          container: "canvas",
-			          width:  window.innerWidth,
-			          height: window.innerHeight
-			        });
-
-			        //Skapar lager i stagen
-			        var layer = new Kinetic.Layer();
-					var layer_start = new Kinetic.Layer();
-
-			        //Bakgrundslagret där bakgrundsbilden ligger
-			        var layer_background = new Kinetic.Layer();
-
-			        //Lägger till lagret i stagen
-			        stage.add(layer_background);
-			        stage.add(layer);
-			        stage.add(layer_start);       
-
-			        //Variabler som är procentsatser av window, gör det lätt att placera ut objekt
-			        var percent_width = window.innerWidth/100;
-			        var percent_height = window.innerHeight/100;
-
-			        //Grupp som grupperar nästa-knapp med nästa-text
-			        //Grupperar alltså rect_next och text_next_btn
-
-			        var group_start = new Kinetic.Group({});
-			        var group_next = new Kinetic.Group({});
-
-			        rect_start = new Kinetic.Rect(rect_start_btn_layout)
-
-			        var rect_start_look = new Kinetic.Rect({
-				      	x: 0,
-				      	y: 0,
-				      	width: percent_width*100, 
-				      	height: percent_height*100,
-				      	fill: 'black',
-				      	opacity: 0.8
-
-			      });
-
-					rect_meny = new Kinetic.Rect(rect_meny_layout)        
-
-			       	rect_meny.setOffset({
-			        	x: rect_meny.getWidth()/2,
-			        	y: rect_meny.getHeight()/2
-			        });
-
-
-			        //Menytext
-			        text_quest_meny = new Kinetic.Text(text_quest_meny_layout)  
-
-			        text_quest_meny.setOffset({
-			        	x: text_quest_meny.getWidth()/2,
-			        });
-
-			        rect_start_btn = new Kinetic.Text(rect_start_btn_layout)
-
-			       /* rect_start_btn.setOffset({
-			        	x: rect_start_btn.getWidth()/4,
-			        	y: rect_start_btn.getHeight()/4
-			        })*/
-
-			        text_quest_start_btn = new Kinetic.Text(text_quest_start_btn_layout)
-
-			       	 text_quest_start_btn.setOffset({
-			        	x: text_quest_start_btn.getWidth()/2,
-			        	y: text_quest_start_btn.getHeight()/2
-			        })
-
-			        //Skapar cirkelobjektet
-			        circle = new Kinetic.Circle(circleCenter_layout)
-			      	
-			      	//Skapar variabel för svarscirkelns egenskaper
-			      	//För att kunna räkna ut var en punkt bör hamna på alla skärmar utgår jag från min skärm (UX32VD/Carl)
-			      	//window.innerWidth/Height är storleken på webbfönstret hos den lokala användaren. Detta delar en med 
-
-			      	//storleken på fönstret från UX32VD (1920 i bredd och 979 i höjd). Sedan multiplicerar man med punkten.
-
-			      	circleAnswer = new Kinetic.Circle(circleAnswer_layout)
-
-			        //Skapar cirkelobjektet
-			        circle2 = new Kinetic.Circle(circleAnswer)
-
-
-			        //Skapar en variabel för linjens egenskaper
-			        var lineDrawn = { 
-			            stroke: 'red',
-					    strokeWidth: 1,
-					    points: [0,0,0,0]
-					};
-
-
-					//Skapar en linje, denna ritas sedan i dragend funktionen längre ner
-					line = new Kinetic.Line(lineDrawn)
-
-			        //Skapar ett imageobjekt, i detta fall Yoda
-			        var imageObj = new Image();
-			        imageObj.onload = function() {
-				        var yoda = new Kinetic.Image({
-				          x: percent_width*2,
-				          y: percent_height*67,
-				          image: imageObj,
-				          width: percent_width*15,
-				          height: percent_height*30,
-				         
-				    });
-
-
-				   text_quest = new Kinetic.Text(text_quest_layout)
-				   //Textobjekt.  Detta bör man kunna hämta via en databas
-
-
-				   //Textobjekt. Detta bör man kunna hämta via en databas
-				   text_ans = new Kinetic.Text(text_ans_layout)
-				
-
-				rect_next = new Kinetic.Rect(rect_next_layout)
-
-
-			    rect_next.setOffset({
-			    	x: rect_next.getWidth()/2, 
-			    	y: rect_next.getHeight()/2
-			    })
-
-
-
-			    text_next_btn = new Kinetic.Text(text_next_btn_layout)
-
-				   text_next_btn.setOffset({
-				   	x: text_next_btn.getWidth()/2,
-				   	y: text_next_btn.getHeight()/2
-				   })
-
-
-			    //Rektangelobjekt svarsbaren
-			    rect_bar = new Kinetic.Rect(rect_bar_layout)
-
-			      
-			      //Detta är nödvändigt för att få punkten på samma ställe över alla plattformar
-			      //Man sätter skalningen på bakgrunden genom width och height, denna sätts alltid
-			      //till fönsterstorleken på det aktuella fönstret. Då kan man få ut en skala som
-			      //stämmer överens genom alla plattformar.
-			      var canvasBackgroundImage = new Image();
-				  canvasBackgroundImage.onload = function() {
-				      var backgroundImage = new Kinetic.Image({
-			            x: 0,
-			            y: 0,
-			            image: canvasBackgroundImage,
-			            width: percent_width*100,
-			            height: percent_height*100,
-			            opacity: 1.0
+				        //Skapar stagen
+				        //Container: Bestämmer vart canvasen ska lägga sig
+				        //Width: Storlek på stagen
+				        //Height: Höjd på stagen        		       
+				        var stage = new Kinetic.Stage({
+				          container: "canvas",
+				          width:  window.innerWidth,
+				          height: window.innerHeight
 				        });
-				        layer_background.add(backgroundImage);
-        				layer_background.draw();
-				        
-				    };
-				    canvasBackgroundImage.src = ('http://www.carlenglund.se/atlas/lol.png'); //Location of our background
-			       
-			     //Kollar position när man slutar dra
-			     //Skriver ut positionen i x/y-led
-			     //Sätter punkterna linjen ska gå emellan
-			     //lägger till linjen och cirkeln till lagret och ritar om
-			     	circle.on('dragend', function() {  
-				        circle.setDraggable(false)
 
-				  		line.setPoints([circle2.getPosition().x, circle2.getPosition().y, circle.getPosition().x, circle.getPosition().y]);
-				  		layer.add(line);
-				        layer.add(circle2);
-				        //yoda.remove(); YODA VILL VARA KVAR
+				        //Skapar lager i stagen
+				        var layer = new Kinetic.Layer();
+						var layer_start = new Kinetic.Layer();
 
+				        //Bakgrundslagret där bakgrundsbilden ligger
+				        var layer_background = new Kinetic.Layer();
 
-				        //Räknar ut poängen, 1000 - längden på line
-				         //Räknar ut poängen, 700 - skalad längd^2
-		                 var points = 700 - Math.pow((Math.sqrt(Math.pow((circle2.getPosition().x - circle.getPosition().x)*100/window.innerWidth,2) 
-		                   + Math.pow((circle2.getPosition().y - circle.getPosition().y)*100/window.innerHeight,2))),2);
-		 
-		                 //Om negativ poäng, så får användaren ingen poäng
-		                 if(points<0)
-		                   points = 1; //Tröstpoäng
-		                 //BONUS om användaren kommer riktigt nära, 1000 är maxpoäng
-		                 else if(points>675)
-		                   points += 300;
+				        //Lägger till lagret i stagen
+				        stage.add(layer_background);
+				        stage.add(layer);
+				        stage.add(layer_start);       
 
+				        //Variabler som är procentsatser av window, gör det lätt att placera ut objekt
+				        var percent_width = window.innerWidth/100;
+				        var percent_height = window.innerHeight/100;
 
-				        var text_points = new Kinetic.Text({
-					      x: percent_width*66,
-					      y: percent_height*91,
-					      text: points.toFixed(0) + ' poäng',
-				          fontSize: percent_height*3,
-				          fontFamily: 'Calibri',
-			    	      fill: 'white',
-			    	      visible: true
-			    	  	});
+				        //Grupp som grupperar nästa-knapp med nästa-text
+				        //Grupperar alltså rect_next och text_next_btn
 
-				        layer.add(text_points);
-				        layer.add(text_ans);
-				        circle2.setVisible(true);
-				        rect_next.setVisible(true);
-				        text_next_btn.setVisible(true);
-				        text_ans.setVisible(true);
+				        var group_start = new Kinetic.Group({});
+				        var group_next = new Kinetic.Group({});
 
-				        circle.setFill('green');
-				        layer.add(circle);
+				        rect_start = new Kinetic.Rect(rect_start_btn_layout)
 
-				        layer.draw();
-				        text_points.setVisible(false);
-			        
-			        //setInterval(function(){window.location="http://www.carlenglund.se/atlas"},2000);
+				        var rect_start_look = new Kinetic.Rect({
+					      	x: 0,
+					      	y: 0,
+					      	width: percent_width*100, 
+					      	height: percent_height*100,
+					      	fill: 'black',
+					      	opacity: 0.8
 
-     				 });
+				      	});
 
-			     	//Funktion som kopplas till 'nästa'knappen
-			     	//sätter circle, line och circle2 till utgångsvärdena
-			     	//sätter rect_next, text_ans och text_next_btn till osynliga
-			     	group_next.on('tap click', function(){
-			     	circle.setAttrs(circleCenter_layout)
-			     	line.setAttrs(lineDrawn)
-			     	//circle2.setAttrs(circleAnswer)
-			     	rect_next.setVisible(false)
-				    text_ans.setVisible(false)
-				    text_next_btn.setVisible(false)
+						rect_meny = new Kinetic.Rect(rect_meny_layout)        
 
-				    i++;
-				    text_quest.setText("hej" + i);
-				    circle2.setX(array[i].coordx)
-			     	circle2.setY(array[i].coordy)
+				       	rect_meny.setOffset({
+				        	x: rect_meny.getWidth()/2,
+				        	y: rect_meny.getHeight()/2
+				        });
 
 
-				    sound_btn.play();
+				        //Menytext
+				        text_quest_meny = new Kinetic.Text(text_quest_meny_layout)  
+
+				        text_quest_meny.setOffset({
+				        	x: text_quest_meny.getWidth()/2,
+				        });
+
+				        rect_start_btn = new Kinetic.Text(rect_start_btn_layout)
+
+				       	/* rect_start_btn.setOffset({
+				        	x: rect_start_btn.getWidth()/4,
+				        	y: rect_start_btn.getHeight()/4
+				        })*/
+
+				        text_quest_start_btn = new Kinetic.Text(text_quest_start_btn_layout)
+
+				       	text_quest_start_btn.setOffset({
+				        	x: text_quest_start_btn.getWidth()/2,
+				        	y: text_quest_start_btn.getHeight()/2
+				        })
+
+				        //Skapar cirkelobjektet
+				        circle = new Kinetic.Circle(circleCenter_layout)
+				      	
+				      	//Skapar variabel för svarscirkelns egenskaper
+				      	//För att kunna räkna ut var en punkt bör hamna på alla skärmar utgår jag från min skärm (UX32VD/Carl)
+				      	//window.innerWidth/Height är storleken på webbfönstret hos den lokala användaren. Detta delar en med 
+
+				      	//storleken på fönstret från UX32VD (1920 i bredd och 979 i höjd). Sedan multiplicerar man med punkten.
+
+				      	circleAnswer = new Kinetic.Circle(circleAnswer_layout)
+
+				        //Skapar cirkelobjektet
+				        circle2 = new Kinetic.Circle(circleAnswer)
 
 
-			     	layer.draw();
-			     	});
+				        //Skapar en variabel för linjens egenskaper
+				        var lineDrawn = { 
+				            stroke: 'red',
+						    strokeWidth: 1,
+						    points: [0,0,0,0]
+						};
 
-			     	group_start.on('tap click', function(){
-			     		sound_btn.play();
-			     		layer_start.clear();
-			     		i++;
-			     		text_quest.setText("hej" + i)
-			     		//circle2.setX(array[i].coordx)
-			     		//circle2.setY(array[i].coordy)
-			     		layer.draw();
-			     	});
 
-			     //Lägger till cirkeln till lagret och sedan lägger lagret i stagen
-			   	  //layer.add(rect);
-			      layer.add(rect_bar);
-			      layer.add(text_quest);
-			      layer.add(yoda);
-			      layer.add(circle);
-			      layer.add(circle2);
+						//Skapar en linje, denna ritas sedan i dragend funktionen längre ner
+						line = new Kinetic.Line(lineDrawn)
 
-			      group_next.add(rect_next);
-			      group_next.add(text_next_btn);
-			      layer.add(group_next);
+						//Definierar egenskaper för de bildobjekt som laddas in
+						//Polaroid
+						var polaroidImg = new Kinetic.Image({
+						    image: images.polaroid,
+						    x: percent_width*2,
+						    y: percent_height*67,
+						    offset: [percent_width/ 2, percent_height / 2],
+						    width: percent_width*15,
+						    height: percent_height*30
+						});
 
-			     group_start.add(rect_start_btn);
-			     group_start.add(rect_start);
-			     group_start.add(text_quest_start_btn);
-			     
-			      	
-			     layer_start.add(rect_start_look);
-			     layer_start.add(rect_meny);
-			     layer_start.add(text_quest_meny);
-			     layer_start.add(group_start);
-			     layer_start.draw();
+					   	text_quest = new Kinetic.Text(text_quest_layout)
+					   	//Textobjekt.  Detta bör man kunna hämta via en databas
 
-			      
+					   	//Textobjekt. Detta bör man kunna hämta via en databas
+					   	text_ans = new Kinetic.Text(text_ans_layout)
+					
 
-			     stage.add(layer);
-			     stage.add(layer_start);
+						rect_next = new Kinetic.Rect(rect_next_layout)
+
+
+					    rect_next.setOffset({
+					    	x: rect_next.getWidth()/2, 
+					    	y: rect_next.getHeight()/2
+				    	})
+
+
+
+					    text_next_btn = new Kinetic.Text(text_next_btn_layout)
+
+					   	text_next_btn.setOffset({
+					   		x: text_next_btn.getWidth()/2,
+					   		y: text_next_btn.getHeight()/2
+					   	})
+
+
+					    //Rektangelobjekt svarsbaren
+					    rect_bar = new Kinetic.Rect(rect_bar_layout)
+
+				      
+				      	//Detta är nödvändigt för att få punkten på samma ställe över alla plattformar
+				      	//Man sätter skalningen på bakgrunden genom width och height, denna sätts alltid
+				      	//till fönsterstorleken på det aktuella fönstret. Då kan man få ut en skala som
+				      	//stämmer överens genom alla plattformar.
+				      	var canvasBackgroundImage = new Image();
+					  	canvasBackgroundImage.onload = function() {
+					    	var backgroundImage = new Kinetic.Image({
+				            	x: 0,
+					            y: 0,
+					            image: canvasBackgroundImage,
+					            width: percent_width*100,
+					            height: percent_height*100,
+					            opacity: 1.0
+						    });
+						    layer_background.add(backgroundImage);
+		        			layer_background.draw();    
+					    };
+					    canvasBackgroundImage.src = ('http://www.carlenglund.se/atlas/lol.png'); //Location of our background
+				       
+				     	//Kollar position när man slutar dra
+				     	//Skriver ut positionen i x/y-led
+				     	//Sätter punkterna linjen ska gå emellan
+				     	//lägger till linjen och cirkeln till lagret och ritar om
+				     	circle.on('dragend', function() {  
+					        circle.setDraggable(false)
+
+					  		line.setPoints([circle2.getPosition().x, circle2.getPosition().y, circle.getPosition().x, circle.getPosition().y]);
+					  		layer.add(line);
+					        layer.add(circle2);
+					        //yoda.remove(); YODA VILL VARA KVAR
+
+
+					        //Räknar ut poängen, 1000 - längden på line
+					        //Räknar ut poängen, 700 - skalad längd^2
+			                var points = 700 - Math.pow((Math.sqrt(Math.pow((circle2.getPosition().x - circle.getPosition().x)*100/window.innerWidth,2) 
+			                   + Math.pow((circle2.getPosition().y - circle.getPosition().y)*100/window.innerHeight,2))),2);
 			 
-			        
-				 }; imageObj.src = 'http://cloud.lomography.com/477/576/40/02c075b18ecee79a47211e3eb1aee9d566d187.jpg';
+			                //Om negativ poäng, så får användaren ingen poäng
+			                if(points<0)
+			                	points = 1; //Tröstpoäng
+			                 //BONUS om användaren kommer riktigt nära, 1000 är maxpoäng
+			                else if(points>675)
+			                	points += 300;
+
+					        var text_points = new Kinetic.Text({
+						    x: percent_width*66,
+						    y: percent_height*91,
+						    text: points.toFixed(0) + ' poäng',
+					        	fontSize: percent_height*3,
+					        	fontFamily: 'Calibri',
+				    	    	fill: 'white',
+				    	    	visible: true
+				    	  	});
+
+					        layer.add(text_points);
+					        layer.add(text_ans);
+					        circle2.setVisible(true);
+					        rect_next.setVisible(true);
+					        text_next_btn.setVisible(true);
+					        text_ans.setVisible(true);
+
+					        circle.setFill('green');
+					        layer.add(circle);
+
+					        layer.draw();
+					        text_points.setVisible(false);
+				        
+				        //setInterval(function(){window.location="http://www.carlenglund.se/atlas"},2000);
+
+	     				});
+
+				     	//Funktion som kopplas till 'nästa'knappen
+				     	//sätter circle, line och circle2 till utgångsvärdena
+				     	//sätter rect_next, text_ans och text_next_btn till osynliga
+				     	group_next.on('tap click', function(){
+					     	circle.setAttrs(circleCenter_layout)
+					     	line.setAttrs(lineDrawn)
+					     	//circle2.setAttrs(circleAnswer)
+					     	rect_next.setVisible(false)
+						    text_ans.setVisible(false)
+						    text_next_btn.setVisible(false)
+
+						    i++;
+						    text_quest.setText("hej" + i);
+						    circle2.setX(array[i].coordx)
+					     	circle2.setY(array[i].coordy)
+
+
+						    sound_btn.play();
+
+
+					     	layer.draw();
+				     	});
+
+				     	group_start.on('tap click', function(){
+				     		sound_btn.play();
+				     		layer_start.clear();
+				     		i++;
+				     		text_quest.setText("hej" + i)
+				     		//circle2.setX(array[i].coordx)
+				     		//circle2.setY(array[i].coordy)
+				     		layer.draw();
+				     	});
+
+				     	//Lägger till cirkeln till lagret och sedan lägger lagret i stagen
+				   	  	//layer.add(rect);
+					    layer.add(rect_bar);
+					    layer.add(text_quest);
+					    layer.add(polaroidImg);
+					    layer.add(circle);
+					    layer.add(circle2);
+
+				      	group_next.add(rect_next);
+				      	group_next.add(text_next_btn);
+				      	layer.add(group_next);
+
+				     	group_start.add(rect_start_btn);
+				     	group_start.add(rect_start);
+				     	group_start.add(text_quest_start_btn);
+				     
+				     	layer_start.add(rect_start_look);
+				     	layer_start.add(rect_meny);
+				     	layer_start.add(text_quest_meny);
+				     	layer_start.add(group_start);
+				     	layer_start.draw();
+
+				    	stage.add(layer);
+				    	stage.add(layer_start);
+				        
+					}; 
+					
+					//Sökväg till bilder
+					var sources = {
+					 	polaroid: 'http://cloud.lomography.com/477/576/40/02c075b18ecee79a47211e3eb1aee9d566d187.jpg',
+					 	pin_question: 'img/pin_red.png'
+					 };
+
+					//Laddar in bilder
+					loadImages(sources, drawImages);
 
 			    </script>
-			
+			    <script src="database.js" type="text/javascript"></script>
 		</div>
 
 
 	</body>
 </html>
-
-
-
-
