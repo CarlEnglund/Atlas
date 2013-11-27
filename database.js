@@ -70,6 +70,15 @@ var text_quest_start_btn_layout = {
     fill: 'black' 
 };
 
+//Skapar variabel med cirkelns egenskaper 
+//x: bestämmer startposition i x
+//y: bestämmer startposition i y
+//Radius: bestämmer radien
+//Fill: bestämmer innerfärgen
+//Stroke: bestämmer randfärgen
+//Strokewidth: randstorlek
+//draggable: true/false
+//dragbounds: Vart man får dra den
 var circleAnswer_layout = {
     x: ((window.innerWidth)/1920)*1108.6,
     y: ((window.innerHeight)/979)*351.6,
@@ -82,28 +91,6 @@ var circleAnswer_layout = {
     },
   visible: false,
 };
-
-//Skapar variabel med cirkelns egenskaper 
-//x: bestämmer startposition i x
-//y: bestämmer startposition i y
-//Radius: bestämmer radien
-//Fill: bestämmer innerfärgen
-//Stroke: bestämmer randfärgen
-//Strokewidth: randstorlek
-//draggable: true/false
-//dragbounds: Vart man får dra den
-/*var circleCenter_layout = {
-    x: percent_width*50,
-    y: percent_height*50,
-    radius: 5,
-    fill: 'red',
-    stroke: 'white',
-    strokeWidth: 2,
-    draggable: true,
-    dragbounds: {
-    left: window.innerWidth, right: window.innerHeight
-    }
-};*/
 
 var text_quest_layout = {
     x: percent_width*20,
@@ -185,16 +172,25 @@ var text_starTotal_layout = {
 };
 
 var starTotal_layout = {
-      x: percent_width*85,
-      y: percent_height*94,
+      x: percent_width*85.7,
+      y: percent_height*94.4,
       numPoints: 5,
-      innerRadius: 10,
-      outerRadius: 20,
-      fill: 'yellow',
-      stroke: '#ffcb00',
-      strokeWidth: 2
+      innerRadius: percent_width*0.5,
+      outerRadius: percent_width*1,
+      fill: '#dfbb00',
+      //stroke: '#ffcb00',
+      //strokeWidth: percent_width*0.1
 };
 
-
+var star_layout = {
+      x: percent_width*66,
+      y: percent_height*91,
+      numPoints: 5,
+      innerRadius: percent_width*0.6,
+      outerRadius: percent_width*1.2,
+      fill: 0,
+      stroke: 'white',
+      strokeWidth: percent_width*0.1
+};
 
 
