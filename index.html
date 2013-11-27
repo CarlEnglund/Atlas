@@ -19,7 +19,12 @@
 			<!--<div class="help"><p>Nånting</p></div>-->
 			 <script defer="defer">
 
+<<<<<<< HEAD
 			 		var i = -1;
+=======
+			        var sound_btn = new Audio('');
+
+>>>>>>> 9b113c7edea620f841547280000bb1b7224dde8b
 			        //Skapar stagen
 			        //Container: Bestämmer vart canvasen ska lägga sig
 			        //Width: Storlek på stagen
@@ -207,6 +212,7 @@
 		                 else if(points>675)
 		                   points += 300;
 
+
 				        var text_points = new Kinetic.Text({
 					      x: percent_width*66,
 					      y: percent_height*91,
@@ -244,14 +250,21 @@
 			     	rect_next.setVisible(false)
 				    text_ans.setVisible(false)
 				    text_next_btn.setVisible(false)
+
 				    i++;
 				    text_quest.setText("hej" + i);
 				    circle2.setX(array[i].coordx)
 			     	circle2.setY(array[i].coordy)
+
+
+				    sound_btn.play();
+
+
 			     	layer.draw();
 			     	});
 
 			     	group_start.on('tap click', function(){
+			     		sound_btn.play();
 			     		layer_start.clear();
 			     		i++;
 			     		text_quest.setText("hej" + i)
