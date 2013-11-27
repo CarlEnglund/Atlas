@@ -92,7 +92,7 @@ var circleAnswer_layout = {
 //Strokewidth: randstorlek
 //draggable: true/false
 //dragbounds: Vart man får dra den
-var circleCenter_layout = {
+/*var circleCenter_layout = {
     x: percent_width*50,
     y: percent_height*50,
     radius: 5,
@@ -103,7 +103,7 @@ var circleCenter_layout = {
     dragbounds: {
     left: window.innerWidth, right: window.innerHeight
     }
-};
+};*/
 
 var text_quest_layout = {
     x: percent_width*20,

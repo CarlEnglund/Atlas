@@ -37,7 +37,7 @@
 			 			}
 			 		}
 
-			 		//Laddar in
+			 		//Laddar in spelytan
 			 		function drawImages(images) {
 				 		var i = -1;
 
@@ -71,7 +71,6 @@
 
 				        //Grupp som grupperar nästa-knapp med nästa-text
 				        //Grupperar alltså rect_next och text_next_btn
-
 				        var group_start = new Kinetic.Group({});
 				        var group_next = new Kinetic.Group({});
 
@@ -117,7 +116,7 @@
 				        })
 
 				        //Skapar cirkelobjektet
-				        circle = new Kinetic.Circle(circleCenter_layout)
+				        //circle = new Kinetic.Circle(circleCenter_layout)
 				      	
 				      	//Skapar variabel för svarscirkelns egenskaper
 				      	//För att kunna räkna ut var en punkt bör hamna på alla skärmar utgår jag från min skärm (UX32VD/Carl)
@@ -125,11 +124,10 @@
 
 				      	//storleken på fönstret från UX32VD (1920 i bredd och 979 i höjd). Sedan multiplicerar man med punkten.
 
-				      	circleAnswer = new Kinetic.Circle(circleAnswer_layout)
+				      	//circleAnswer = new Kinetic.Circle(circleAnswer_layout)
 
 				        //Skapar cirkelobjektet
-				        circle2 = new Kinetic.Circle(circleAnswer)
-
+				        //xcircle2 = new Kinetic.Circle(circleAnswer)
 
 				        //Skapar en variabel för linjens egenskaper
 				        var lineDrawn = { 
@@ -137,7 +135,6 @@
 						    strokeWidth: 1,
 						    points: [0,0,0,0]
 						};
-
 
 						//Skapar en linje, denna ritas sedan i dragend funktionen längre ner
 						line = new Kinetic.Line(lineDrawn)
@@ -153,8 +150,33 @@
 						    height: percent_height*30
 						});
 
+						//Frågepin
+						var pinQuestion = new Kinetic.Image({
+							image: images.pinQuestion,
+							x: percent_width*50,
+    						y: percent_height*50,
+    						width: percent_width*2,
+						    height: percent_height*5,
+    						offsetY: percent_height*5,
+    						draggable: true,
+    						dragbounds: {
+    							left: window.innerWidth, right: window.innerHeight
+    						}
+						});
+
+						//Svarspin
+						var pinAnswer = new Kinetic.Image({
+							image: images.pinAnswer,
+							x: percent_width*75,
+    						y: percent_height*50,
+    						width: percent_width*2,
+						    height: percent_height*5,
+    						offsetY: percent_height*5,
+    						visible: false
+						});
+
+						//Textobjekt.  Detta bör man kunna hämta via en databas
 					   	text_quest = new Kinetic.Text(text_quest_layout)
-					   	//Textobjekt.  Detta bör man kunna hämta via en databas
 
 					   	//Textobjekt. Detta bör man kunna hämta via en databas
 					   	text_ans = new Kinetic.Text(text_ans_layout)
@@ -169,7 +191,6 @@
 				    	})
 
 
-
 					    text_next_btn = new Kinetic.Text(text_next_btn_layout)
 
 					   	text_next_btn.setOffset({
@@ -182,13 +203,13 @@
 					    rect_bar = new Kinetic.Rect(rect_bar_layout)
 
 				      	//Bakgrunden till frågeräknargrafiken
-			 		   rect_quest_count = new Kinetic.Rect(rect_quest_count_layout)
+			 		   	rect_quest_count = new Kinetic.Rect(rect_quest_count_layout)
 
-			 		   //fyllningen till frågeräknargrafiken
-			 		   rect_quest_fill = new Kinetic.Rect(rect_quest_fill_layout)
+			 		   	//fyllningen till frågeräknargrafiken
+			 		   	rect_quest_fill = new Kinetic.Rect(rect_quest_fill_layout)
 
-			 		   starTotal = new Kinetic.Star(starTotal_layout);
-			 		   text_starTotal = new Kinetic.Text(text_starTotal_layout);
+			 		   	starTotal = new Kinetic.Star(starTotal_layout);
+			 		   	text_starTotal = new Kinetic.Text(text_starTotal_layout);
 
 				      	//Detta är nödvändigt för att få punkten på samma ställe över alla plattformar
 				      	//Man sätter skalningen på bakgrunden genom width och height, denna sätts alltid
@@ -215,19 +236,17 @@
 				     	//Skriver ut positionen i x/y-led
 				     	//Sätter punkterna linjen ska gå emellan
 				     	//lägger till linjen och cirkeln till lagret och ritar om
-				     	circle.on('dragend', function() {  
-					        circle.setDraggable(false)
+				     	pinQuestion.on('dragend', function() {  
+					        pinQuestion.setDraggable(false)
 
-					  		line.setPoints([circle2.getPosition().x, circle2.getPosition().y, circle.getPosition().x, circle.getPosition().y]);
+					  		line.setPoints([pinAnswer.getPosition().x, pinAnswer.getPosition().y, pinQuestion.getPosition().x, pinQuestion.getPosition().y]);
 					  		layer.add(line);
-					        layer.add(circle2);
-					        //yoda.remove(); YODA VILL VARA KVAR
-
+					        layer.add(pinAnswer);
 
 					        //Räknar ut poängen, 1000 - längden på line
 					        //Räknar ut poängen, 700 - skalad längd^2
-			                var points = 700 - Math.pow((Math.sqrt(Math.pow((circle2.getPosition().x - circle.getPosition().x)*100/window.innerWidth,2) 
-			                   + Math.pow((circle2.getPosition().y - circle.getPosition().y)*100/window.innerHeight,2))),2);
+			                var points = 700 - Math.pow((Math.sqrt(Math.pow((pinAnswer.getPosition().x - pinQuestion.getPosition().x)*100/window.innerWidth,2) 
+			                   + Math.pow((pinAnswer.getPosition().y - pinQuestion.getPosition().y)*100/window.innerHeight,2))),2);
 			 
 			                //Om negativ poäng, så får användaren ingen poäng
 			                if(points<0)
@@ -259,13 +278,14 @@
 				    		layer.add(rect_quest_fill);
 					        layer.add(text_points);
 					        layer.add(text_ans);
-					        circle2.setVisible(true);
+					        pinAnswer.setVisible(true);
 					        rect_next.setVisible(true);
 					        text_next_btn.setVisible(true);
 					        text_ans.setVisible(true);
 
-					        circle.setFill('green');
-					        layer.add(circle);
+					       	layer.add(pinQuestion);
+					        //circle.setFill('green');
+					        //layer.add(circle);
 
 					        layer.draw();
 					        text_points.setVisible(false);
@@ -278,13 +298,17 @@
 				     	//sätter circle, line och circle2 till utgångsvärdena
 				     	//sätter rect_next, text_ans och text_next_btn till osynliga
 				     	group_next.on('tap click', function(){
-					     	circle.setAttrs(circleCenter_layout)
-					     	line.setAttrs(lineDrawn)
+					     	//circle.setAttrs(circleCenter_layout)
+					     	line.setAttrs(lineDrawn);
 					     	//circle2.setAttrs(circleAnswer)
-					     	rect_next.setVisible(false)
-						    text_ans.setVisible(false)
-						    text_next_btn.setVisible(false)
-						    circle2.setVisible(false)
+					     	rect_next.setVisible(false);
+						    text_ans.setVisible(false);
+						    text_next_btn.setVisible(false);
+
+						    //Dölj svaret, reseta position för frågepin och gör dragbar
+						    pinAnswer.setVisible(false);
+						    pinQuestion.setPosition(percent_width*50,percent_height*50);
+						    pinQuestion.setDraggable(true);
 
 						    i++;
 						    text_quest.setText("hej" + i);
@@ -292,10 +316,7 @@
 						    //circle2.setX(array[i].coordx)
 					     	//circle2.setY(array[i].coordy)
 
-
 						    sound_btn.play();
-
-
 					     	layer.draw();
 				     	});
 
@@ -315,8 +336,9 @@
 			   	  		layer.add(rect_quest_count)
 					    layer.add(text_quest);
 					    layer.add(polaroidImg);
-					    layer.add(circle);
-					    layer.add(circle2);
+					    layer.add(pinQuestion);
+					    //layer.add(circle);
+					    layer.add(pinAnswer);
 					    layer.add(starTotal);
 					    layer.add(text_starTotal);
 
@@ -342,7 +364,8 @@
 					//Sökväg till bilder
 					var sources = {
 					 	polaroid: 'http://cloud.lomography.com/477/576/40/02c075b18ecee79a47211e3eb1aee9d566d187.jpg',
-					 	pin_question: 'img/pin_red.png'
+					 	pinQuestion: 'img/pin_red.png',
+					 	pinAnswer: 'img/pin_green.png'
 					 };
 
 					//Laddar in bilder
