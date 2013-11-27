@@ -185,16 +185,25 @@ var text_starTotal_layout = {
 };
 
 var starTotal_layout = {
-      x: percent_width*85,
-      y: percent_height*94,
+      x: percent_width*85.7,
+      y: percent_height*94.4,
       numPoints: 5,
-      innerRadius: 10,
-      outerRadius: 20,
-      fill: 'yellow',
-      stroke: '#ffcb00',
-      strokeWidth: 2
+      innerRadius: percent_width*0.5,
+      outerRadius: percent_width*1,
+      fill: '#dfbb00',
+      //stroke: '#ffcb00',
+      //strokeWidth: percent_width*0.1
 };
 
-
+var star_layout = {
+      x: percent_width*66,
+      y: percent_height*91,
+      numPoints: 5,
+      innerRadius: percent_width*0.6,
+      outerRadius: percent_width*1.2,
+      fill: 0,
+      stroke: 'white',
+      strokeWidth: percent_width*0.1
+};
 
 

@@ -189,6 +189,15 @@
 
 			 		   starTotal = new Kinetic.Star(starTotal_layout);
 			 		   text_starTotal = new Kinetic.Text(text_starTotal_layout);
+			 		   star1 = new Kinetic.Star(star_layout);
+			 		   star2 = new Kinetic.Star(star_layout);
+			 		   star2.setX(67.4);
+			 		   star3 = new Kinetic.Star(star_layout);
+			 		   star3.setX(68.8);
+			 		   star4 = new Kinetic.Star(star_layout);
+			 		   star4.setX(70.2);
+			 		   star5 = new Kinetic.Star(star_layout);
+			 		   star5.setX(71.6);
 
 				      	//Detta är nödvändigt för att få punkten på samma ställe över alla plattformar
 				      	//Man sätter skalningen på bakgrunden genom width och height, denna sätts alltid
@@ -226,16 +235,29 @@
 
 					        //Räknar ut poängen, 1000 - längden på line
 					        //Räknar ut poängen, 700 - skalad längd^2
-			                var points = 700 - Math.pow((Math.sqrt(Math.pow((circle2.getPosition().x - circle.getPosition().x)*100/window.innerWidth,2) 
-			                   + Math.pow((circle2.getPosition().y - circle.getPosition().y)*100/window.innerHeight,2))),2);
-			 
-			                //Om negativ poäng, så får användaren ingen poäng
-			                if(points<0)
-			                	points = 1; //Tröstpoäng
-			                 //BONUS om användaren kommer riktigt nära, 1000 är maxpoäng
-			                else if(points>675)
-			                	points += 300;
+			               
+			 				var points = Math.sqrt(Math.pow((circle2.getPosition().x - circle.getPosition().x)/window.innerWidth,2) 
+			                   + Math.pow((circle2.getPosition().y - circle.getPosition().y)/window.innerHeight,2));
 
+			 				console.log(points);
+			                //Om negativ poäng, så får användaren ingen poäng<
+			                if(points<=1/16)
+			                	points = 5;
+
+			                else if(points<=1/8)
+			                	points =4;
+
+			                else if(points<=1/4)
+			                	points =3;
+
+			                else if(points<=1/2)
+			                	points =2;
+
+			                else if(points>1/2)
+			                	points =1;
+
+			              
+			                
 					        var text_points = new Kinetic.Text({
 						    x: percent_width*66,
 						    y: percent_height*91,
@@ -248,7 +270,7 @@
 					        
 					        //Summerar varje frågas poäng till en totalpott. Skriver ut denna vid stjärnan.
 							sum = sum + points;
-							text_starTotal.setText('x' + sum.toFixed(0));
+							text_starTotal.setText('x' + ' ' + sum.toFixed(0));
 
 					        //Fyller frågeräknargrafiken med i många femtedelar
 					        rect_quest_fill.setVisible(true)
@@ -319,6 +341,11 @@
 					    layer.add(circle2);
 					    layer.add(starTotal);
 					    layer.add(text_starTotal);
+					    layer.add(star1);
+					    layer.add(star2);
+					    layer.add(star3);
+					    layer.add(star4);
+					    layer.add(star5);
 
 				      	group_next.add(rect_next);
 				      	group_next.add(text_next_btn);
