@@ -151,13 +151,53 @@ var rect_quest_count_layout = {
 
 };
 
-var rect_quest_fill_layout = {
+var rect_quest_fill_layout1 = {
     x: percent_width*66,
     y: percent_height*94,
-    width: 0,
+    width: percent_width*(7/5),
     height: percent_height*4,
-    fill: 'green',
-    visible: false
+    stroke: 'white',
+    strokeWidth: 1,
+
+};
+
+var rect_quest_fill_layout2 = {
+    x: percent_width*66,
+    y: percent_height*94,
+    width: percent_width*(7/5)*2,
+    height: percent_height*4,
+    stroke: 'white',
+    strokeWidth: 1
+
+};
+
+var rect_quest_fill_layout3 = {
+    x: percent_width*66,
+    y: percent_height*94,
+    width: percent_width*(7/5)*3,
+    height: percent_height*4,
+    stroke: 'white',
+    strokeWidth: 1
+
+};
+
+var rect_quest_fill_layout4 = {
+    x: percent_width*66,
+    y: percent_height*94,
+    width: percent_width*(7/5)*4,
+    height: percent_height*4,
+    stroke: 'white',
+    strokeWidth: 1
+
+};
+
+var rect_quest_fill_layout5 = {
+    x: percent_width*66,
+    y: percent_height*94,
+    width: percent_width*(7/5)*5,
+    height: percent_height*4,
+    stroke: 'white',
+    strokeWidth: 1,
 
 };
 
