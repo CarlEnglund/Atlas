@@ -143,7 +143,7 @@ var rect_bar_layout = {
 
 var rect_quest_count_layout = {
     x: percent_width*66,
-    y: percent_height*94,
+    y: percent_height*95,
     width: percent_width*7,
     height: percent_height*4,
     stroke: 'white',
@@ -153,7 +153,7 @@ var rect_quest_count_layout = {
 
 var rect_quest_fill_layout1 = {
     x: percent_width*66,
-    y: percent_height*94,
+    y: percent_height*95,
     width: percent_width*(7/5),
     height: percent_height*4,
     stroke: 'white',
@@ -163,7 +163,7 @@ var rect_quest_fill_layout1 = {
 
 var rect_quest_fill_layout2 = {
     x: percent_width*66,
-    y: percent_height*94,
+    y: percent_height*95,
     width: percent_width*(7/5)*2,
     height: percent_height*4,
     stroke: 'white',
@@ -173,7 +173,7 @@ var rect_quest_fill_layout2 = {
 
 var rect_quest_fill_layout3 = {
     x: percent_width*66,
-    y: percent_height*94,
+    y: percent_height*95,
     width: percent_width*(7/5)*3,
     height: percent_height*4,
     stroke: 'white',
@@ -183,7 +183,7 @@ var rect_quest_fill_layout3 = {
 
 var rect_quest_fill_layout4 = {
     x: percent_width*66,
-    y: percent_height*94,
+    y: percent_height*95,
     width: percent_width*(7/5)*4,
     height: percent_height*4,
     stroke: 'white',
@@ -193,7 +193,7 @@ var rect_quest_fill_layout4 = {
 
 var rect_quest_fill_layout5 = {
     x: percent_width*66,
-    y: percent_height*94,
+    y: percent_height*95,
     width: percent_width*(7/5)*5,
     height: percent_height*4,
     stroke: 'white',
@@ -224,7 +224,7 @@ var starTotal_layout = {
 
 var star1_layout = {
       x: percent_width*64.5,
-      y: percent_height*91,
+      y: percent_height*92,
       numPoints: 5,
       innerRadius: percent_width*0.6,
       outerRadius: percent_width*1.2,
@@ -235,7 +235,7 @@ var star1_layout = {
 
 var star2_layout = {
       x: percent_width*67,
-      y: percent_height*91,
+      y: percent_height*92,
       numPoints: 5,
       innerRadius: percent_width*0.6,
       outerRadius: percent_width*1.2,
@@ -246,7 +246,7 @@ var star2_layout = {
 
 var star3_layout = {
       x: percent_width*69.5,
-      y: percent_height*91,
+      y: percent_height*92,
       numPoints: 5,
       innerRadius: percent_width*0.6,
       outerRadius: percent_width*1.2,
@@ -257,7 +257,7 @@ var star3_layout = {
 
 var star4_layout = {
       x: percent_width*72,
-      y: percent_height*91,
+      y: percent_height*92,
       numPoints: 5,
       innerRadius: percent_width*0.6,
       outerRadius: percent_width*1.2,
@@ -268,7 +268,7 @@ var star4_layout = {
 
 var star5_layout = {
       x: percent_width*74.5,
-      y: percent_height*91,
+      y: percent_height*92,
       numPoints: 5,
       innerRadius: percent_width*0.6,
       outerRadius: percent_width*1.2,
