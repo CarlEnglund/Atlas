@@ -251,6 +251,9 @@
 					        pinQuestion.setDraggable(false)
 
 					  		line.setPoints([pinAnswer.getPosition().x, pinAnswer.getPosition().y, pinQuestion.getPosition().x, pinQuestion.getPosition().y]);
+
+
+
 					  		layer.add(line);
 					        layer.add(pinAnswer);
 
@@ -277,6 +280,7 @@
 			                	star3.setFill('yellow');
 			                	star4.setFill('yellow');
 			                	star5.setFill('yellow');
+			                	anim_5point.start();		//startar animation för 5 poäng
 			                }
 			                	
 			                else if(points<=1/8)
@@ -286,6 +290,7 @@
 			                	star2.setFill('yellow');
 			                	star3.setFill('yellow');
 			                	star4.setFill('yellow');
+			                	anim_4point.start();		//startar animation för 4 poäng
 			                }
 
 
@@ -295,6 +300,7 @@
 			                	star1.setFill('yellow');
 			                	star2.setFill('yellow');
 			                	star3.setFill('yellow');
+			                	anim_3point.start();		//startar animation för 3 poäng
 			                }
 			                	
 
@@ -303,12 +309,14 @@
 			                	points =2;
 			                	star1.setFill('yellow');
 			                	star2.setFill('yellow');
+			                	anim_2point.start();		//startar animation för 2 poäng
 			                }
 
 			                else if(points>1/2)
 			                {
 			                	points =1;
 			                	star1.setFill('yellow');
+			                	anim_1point.start();		//startar animation för 1 poäng
 			                }
 			                	
 					        
@@ -383,6 +391,13 @@
 						    pinQuestion.setPosition(percent_width*50,percent_height*50);
 						    pinQuestion.setDraggable(true);
 
+						    //stoppar animationer vid tryck på nästaknappen
+						    anim_1point.stop();
+						    anim_2point.stop();
+						    anim_3point.stop();
+						    anim_4point.stop();
+						    anim_5point.stop();
+
 						    i++;
 						    text_quest.setText("hej" + i);
 						    //Kommentera av detta om du har tillgång till DB
@@ -446,7 +461,53 @@
 
 				    	stage.add(layer);
 				    	stage.add(layer_start);
-				        
+
+
+				    	//Animationer
+				    	var period = 2000;
+
+				    	//Här är 5 olika variabler för animationer för de fem olika animationstillfällena
+				    	//De skulle kunna läggas in i database.js
+				    	var anim_1point = new Kinetic.Animation(function(frame) {
+					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        
+					        star1.setScale(scale);
+					      }, layer);
+
+				    	var anim_2point = new Kinetic.Animation(function(frame) {
+					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        
+					        star1.setScale(scale);
+					        star2.setScale(scale);
+					      }, layer);
+
+				    	var anim_3point = new Kinetic.Animation(function(frame) {
+					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        
+					        star1.setScale(scale);
+					        star2.setScale(scale);
+					        star3.setScale(scale);
+					      }, layer);
+
+				    	var anim_4point = new Kinetic.Animation(function(frame) {
+					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        
+					        star1.setScale(scale);
+					        star2.setScale(scale);
+					        star3.setScale(scale);
+					        star4.setScale(scale);
+					      }, layer);
+
+				    	var anim_5point = new Kinetic.Animation(function(frame) {
+					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        
+					        star1.setScale(scale);
+					        star2.setScale(scale);
+					        star3.setScale(scale);
+					        star4.setScale(scale);
+					        star5.setScale(scale);
+					      }, layer);
+
 					}; 
 					
 					//Sökväg till bilder
