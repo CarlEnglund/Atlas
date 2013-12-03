@@ -206,7 +206,12 @@
 			 		   	rect_quest_count = new Kinetic.Rect(rect_quest_count_layout)
 
 			 		   	//fyllningen till frågeräknargrafiken
-			 		   	rect_quest_fill = new Kinetic.Rect(rect_quest_fill_layout)
+			 		   	rect_quest_fill1 = new Kinetic.Rect(rect_quest_fill_layout1)
+			 		   	rect_quest_fill2 = new Kinetic.Rect(rect_quest_fill_layout2)
+			 		   	rect_quest_fill3 = new Kinetic.Rect(rect_quest_fill_layout3)
+			 		   	rect_quest_fill4 = new Kinetic.Rect(rect_quest_fill_layout4)
+			 		   	rect_quest_fill5 = new Kinetic.Rect(rect_quest_fill_layout5)
+
 
 			 		   	//Stjärnor för poängsystem
 			 		   	starTotal = new Kinetic.Star(starTotal_layout);
@@ -284,13 +289,46 @@
 							text_starTotal.setText('x' + ' ' + sum.toFixed(0));
 
 					        //Fyller frågeräknargrafiken med i många femtedelar
-					        rect_quest_fill.setVisible(true)
-				  			rect_quest_fill.setWidth(percent_width*(7/5)*(i+1)) 
-							
+					        if(i == 0)
+					        	rect_quest_fill1.setFill('green')
+					        else if(i == 1)
+					        {
+					        	rect_quest_fill1.setFill('green')
+					        	rect_quest_fill2.setFill('green')	
+					        }
+					        else if(i==2)
+					        {
+					        	rect_quest_fill1.setFill('green')
+					        	rect_quest_fill2.setFill('green')
+					        	rect_quest_fill3.setFill('green')
+					        }
+					        else if(i==3)
+					        {
+					        	rect_quest_fill1.setFill('green')
+					        	rect_quest_fill2.setFill('green')
+					        	rect_quest_fill3.setFill('green')
+					        	rect_quest_fill4.setFill('green')
+					        }
+							else if(i==4)
+							{
+					        	rect_quest_fill1.setFill('green')
+					        	rect_quest_fill2.setFill('green')
+					        	rect_quest_fill3.setFill('green')
+					        	rect_quest_fill4.setFill('green')
+								rect_quest_fill5.setFill('green')
+							}
+								
+
 							layer.add(text_starTotal);			   	  
 			   	  			layer.add(rect_quest_count)
-				    		layer.add(rect_quest_fill);
-					        //layer.add(text_points);
+
+				    		layer.add(rect_quest_fill1);
+				    		layer.add(rect_quest_fill2);
+				    		layer.add(rect_quest_fill3);
+				    		layer.add(rect_quest_fill4);
+				    		layer.add(rect_quest_fill5);
+					        layer.add(text_points);
+					        
 					        layer.add(text_ans);
 					        pinAnswer.setVisible(true);
 					        rect_next.setVisible(true);
@@ -347,7 +385,12 @@
 				     	//Lägger till cirkeln till lagret och sedan lägger lagret i stagen
 				   	  	//layer.add(rect);
 					    layer.add(rect_bar);
-			   	  		layer.add(rect_quest_count)
+			   	  		layer.add(rect_quest_count);
+			    		layer.add(rect_quest_fill1);
+			    		layer.add(rect_quest_fill2);
+			    		layer.add(rect_quest_fill3);
+			    		layer.add(rect_quest_fill4);
+			    		layer.add(rect_quest_fill5);
 					    layer.add(text_quest);
 					    layer.add(polaroidImg);
 					    layer.add(pinQuestion);
