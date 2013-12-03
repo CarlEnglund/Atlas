@@ -164,7 +164,7 @@ var rect_quest_fill_layout = {
 var text_starTotal_layout = {
     x: percent_width*87,
     y: percent_height*93,
-    text: 'x',
+    text: 'x 0',
     fontSize: percent_height*3,
     fontFamily: 'Calibri',
     fill: 'white',
@@ -182,8 +182,8 @@ var starTotal_layout = {
       //strokeWidth: percent_width*0.1
 };
 
-var star_layout = {
-      x: percent_width*66,
+var star1_layout = {
+      x: percent_width*64.5,
       y: percent_height*91,
       numPoints: 5,
       innerRadius: percent_width*0.6,
@@ -193,4 +193,46 @@ var star_layout = {
       strokeWidth: percent_width*0.1
 };
 
+var star2_layout = {
+      x: percent_width*67,
+      y: percent_height*91,
+      numPoints: 5,
+      innerRadius: percent_width*0.6,
+      outerRadius: percent_width*1.2,
+      fill: 0,
+      stroke: 'white',
+      strokeWidth: percent_width*0.1
+};
 
+var star3_layout = {
+      x: percent_width*69.5,
+      y: percent_height*91,
+      numPoints: 5,
+      innerRadius: percent_width*0.6,
+      outerRadius: percent_width*1.2,
+      fill: 0,
+      stroke: 'white',
+      strokeWidth: percent_width*0.1
+};
+
+var star4_layout = {
+      x: percent_width*72,
+      y: percent_height*91,
+      numPoints: 5,
+      innerRadius: percent_width*0.6,
+      outerRadius: percent_width*1.2,
+      fill: 0,
+      stroke: 'white',
+      strokeWidth: percent_width*0.1
+};
+
+var star5_layout = {
+      x: percent_width*74.5,
+      y: percent_height*91,
+      numPoints: 5,
+      innerRadius: percent_width*0.6,
+      outerRadius: percent_width*1.2,
+      fill: 0,
+      stroke: 'white',
+      strokeWidth: percent_width*0.1
+};

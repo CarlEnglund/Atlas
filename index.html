@@ -211,15 +211,11 @@
 			 		   	//Stjärnor för poängsystem
 			 		   	starTotal = new Kinetic.Star(starTotal_layout);
 			 		   	text_starTotal = new Kinetic.Text(text_starTotal_layout);
-			 		   	star1 = new Kinetic.Star(star_layout);
-			 		   	star2 = new Kinetic.Star(star_layout);
-			 		   	star2.setX(67.4);
-			 		   	star3 = new Kinetic.Star(star_layout);
-			 		   	star3.setX(68.8);
-			 		   	star4 = new Kinetic.Star(star_layout);
-			 		   	star4.setX(70.2);
-			 		   	star5 = new Kinetic.Star(star_layout);
-			 		   	star5.setX(71.6);
+			 		   	star1 = new Kinetic.Star(star1_layout);
+			 		   	star2 = new Kinetic.Star(star2_layout);
+			 		   	star3 = new Kinetic.Star(star3_layout);
+			 		   	star4 = new Kinetic.Star(star4_layout);
+			 		   	star5 = new Kinetic.Star(star5_layout);
 
 				      	//Detta är nödvändigt för att få punkten på samma ställe över alla plattformar
 				      	//Man sätter skalningen på bakgrunden genom width och height, denna sätts alltid
@@ -282,20 +278,6 @@
 
 			                else if(points>1/2)
 			                	points =1;
-
-
-
-			              
-			                
-					        var text_points = new Kinetic.Text({
-						    x: percent_width*66,
-						    y: percent_height*91,
-						    text: points.toFixed(0) + ' poäng',
-					        	fontSize: percent_height*3,
-					        	fontFamily: 'Calibri',
-				    	    	fill: 'white',
-				    	    	visible: true
-				    	  	});
 					        
 					        //Summerar varje frågas poäng till en totalpott. Skriver ut denna vid stjärnan.
 							sum = sum + points;
@@ -308,7 +290,7 @@
 							layer.add(text_starTotal);			   	  
 			   	  			layer.add(rect_quest_count)
 				    		layer.add(rect_quest_fill);
-					        layer.add(text_points);
+					        //layer.add(text_points);
 					        layer.add(text_ans);
 					        pinAnswer.setVisible(true);
 					        rect_next.setVisible(true);
