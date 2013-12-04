@@ -144,7 +144,7 @@
 						var polaroidImg = new Kinetic.Image({
 						    image: images.polaroid,
 						    x: percent_width*2,
-						    y: percent_height*67,
+						    y: percent_height*63,
 						    offset: [percent_width/ 2, percent_height / 2],
 						    width: percent_width*15,
 						    height: percent_height*30
@@ -179,7 +179,7 @@
 					   	text_quest = new Kinetic.Text(text_quest_layout)
 
 					   	//Textobjekt. Detta bör man kunna hämta via en databas
-					   	text_ans = new Kinetic.Text(text_ans_layout)
+					   	/*text_ans = new Kinetic.Text(text_ans_layout)*/
 					
 
 						rect_next = new Kinetic.Rect(rect_next_layout)
@@ -203,7 +203,7 @@
 					    rect_bar = new Kinetic.Rect(rect_bar_layout)
 
 				      	//Bakgrunden till frågeräknargrafiken
-			 		   	rect_quest_count = new Kinetic.Rect(rect_quest_count_layout)
+			 		   	//rect_quest_count = new Kinetic.Rect(rect_quest_count_layout)
 
 			 		   	//fyllningen till frågeräknargrafiken
 			 		   	rect_quest_fill1 = new Kinetic.Rect(rect_quest_fill_layout1)
@@ -356,13 +356,13 @@
 								
 
 							layer.add(text_starTotal);			   	  
-			   	  			layer.add(rect_quest_count)
+			   	  			//layer.add(rect_quest_count)
 
-					        layer.add(text_ans);
+					       // layer.add(text_ans);
 					        pinAnswer.setVisible(true);
 					        rect_next.setVisible(true);
 					        text_next_btn.setVisible(true);
-					        text_ans.setVisible(true);
+					        //text_ans.setVisible(true);
 
 					       	layer.add(pinQuestion);
 
@@ -386,7 +386,7 @@
 					     	line.setAttrs(lineDrawn);
 					     	//circle2.setAttrs(circleAnswer)
 					     	rect_next.setVisible(false);
-						    text_ans.setVisible(false);
+						    //text_ans.setVisible(false);
 						    text_next_btn.setVisible(false);
 
 						    //Dölj svaret, reseta position för frågepin och gör dragbar
@@ -394,16 +394,16 @@
 						    pinQuestion.setPosition(percent_width*50,percent_height*50);
 						    pinQuestion.setDraggable(true);
 
-						     	pinAnswer.setVisible(false);
+						    pinAnswer.setVisible(false);
 						    pinQuestion.setPosition(percent_width*50,percent_height*50);
 						    pinQuestion.setDraggable(true);
 					       	 i++;
 						    	
-						    //text_quest.setText(array[i].q)
+						    /*text_quest.setText(array[i].q)
 						   
-				     		 /*x = parseFloat(array[i].coordx)*(window.innerWidth/1745)
+				     		 x = parseFloat(array[i].coordx)*(window.innerWidth/1745)
 				     		 y = parseFloat(array[i].coordy)*(window.innerHeight/889)
-				     		 console.log(i);*/
+				     		 console.log(i);
 				     		 switch(i)
 				     		 {
 				     		 	case 1: 
@@ -420,7 +420,7 @@
 				     		 	break;
 				     		 }
 				     		
-				     		/*pinAnswer.setX(x)
+				     		pinAnswer.setX(x)
 				     		pinAnswer.setY(y)*/
 
 						    //stoppar animationer vid tryck på nästaknappen
@@ -441,7 +441,7 @@
 						    sound_btn.play();
 					     	layer.draw();
 
-					     	if(i == 4)
+					     	if(i == 5)
 					     		alert("Game over");
 				     	});
 
@@ -462,7 +462,7 @@
 				     	//Lägger till cirkeln till lagret och sedan lägger lagret i stagen
 				   	  	//layer.add(rect);
 					    layer.add(rect_bar);
-			   	  		layer.add(rect_quest_count);
+			   	  		//layer.add(rect_quest_count);
 			    		layer.add(rect_quest_fill1);
 			    		layer.add(rect_quest_fill2);
 			    		layer.add(rect_quest_fill3);
@@ -505,20 +505,20 @@
 				    	//Här är 5 olika variabler för animationer för de fem olika animationstillfällena
 				    	//De skulle kunna läggas in i database.js
 				    	var anim_1point = new Kinetic.Animation(function(frame) {
-					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        var scale = Math.sin(frame.time * 5 * Math.PI / period)*0.1 + 0.9;
 					        
 					        star1.setScale(scale);
 					      }, layer);
 
 				    	var anim_2point = new Kinetic.Animation(function(frame) {
-					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        var scale = Math.sin(frame.time * 5 * Math.PI / period)*0.1 + 0.9;
 					        
 					        star1.setScale(scale);
 					        star2.setScale(scale);
 					      }, layer);
 
 				    	var anim_3point = new Kinetic.Animation(function(frame) {
-					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        var scale = Math.sin(frame.time * 5 * Math.PI / period)*0.1 + 0.9;
 					        
 					        star1.setScale(scale);
 					        star2.setScale(scale);
@@ -526,7 +526,7 @@
 					      }, layer);
 
 				    	var anim_4point = new Kinetic.Animation(function(frame) {
-					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        var scale = Math.sin(frame.time * 5 * Math.PI / period)*0.1 + 0.9;
 					        
 					        star1.setScale(scale);
 					        star2.setScale(scale);
@@ -535,7 +535,7 @@
 					      }, layer);
 
 				    	var anim_5point = new Kinetic.Animation(function(frame) {
-					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        var scale = Math.sin(frame.time * 5 * Math.PI / period)*0.1 + 0.9;
 					        
 					        star1.setScale(scale);
 					        star2.setScale(scale);
