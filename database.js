@@ -1,4 +1,4 @@
-  /*$(document).ready(function() {
+ /* $(document).ready(function() {
   $.ajax({
       url: 'database.php',
       dataType: 'json',
@@ -17,8 +17,8 @@
   {
    array = arr;
    console.log(array);
-  }*/
-
+  }
+*/
 var percent_width = window.innerWidth/100;
 var percent_height = window.innerHeight/100;
 
@@ -42,7 +42,7 @@ var rect_meny_layout = {
 };
 
 var text_quest_meny_layout = {
-    x: percent_width*30,
+    x: percent_width*50,
     y: percent_height*30,
     text: 'MENY',
     fontSize: 50,
@@ -96,7 +96,7 @@ var text_quest_layout = {
     x: percent_width*20,
     y: percent_height*91,
     text: 'Författaren till klassikern "Brott och straff" är född \n i hans fosterlands huvudstad, vart ligger denna huvudstad?',
-    fontSize: percent_height*3,
+    fontSize: percent_height*2,
     fontFamily: 'Calibri',
     fill: 'white'     
 };

@@ -365,13 +365,16 @@
 					        text_ans.setVisible(true);
 
 					       	layer.add(pinQuestion);
+
+					      
+
 					        //circle.setFill('green');
 					        //layer.add(circle);
 
 					        layer.draw();
 					        text_points.setVisible(false);
 				        
-				        //setInterval(function(){window.location="http://www.carlenglund.se/atlas"},2000);
+				        
 
 	     				});
 
@@ -391,6 +394,35 @@
 						    pinQuestion.setPosition(percent_width*50,percent_height*50);
 						    pinQuestion.setDraggable(true);
 
+						     	pinAnswer.setVisible(false);
+						    pinQuestion.setPosition(percent_width*50,percent_height*50);
+						    pinQuestion.setDraggable(true);
+					       	 i++;
+						    	
+						    //text_quest.setText(array[i].q)
+						   
+				     		 /*x = parseFloat(array[i].coordx)*(window.innerWidth/1745)
+				     		 y = parseFloat(array[i].coordy)*(window.innerHeight/889)
+				     		 console.log(i);*/
+				     		 switch(i)
+				     		 {
+				     		 	case 1: 
+				     		 	polaroidImg.setImage(images.polaroid1)
+				     		 	break;
+				     		 	case 2:
+				     		 	polaroidImg.setImage(images.polaroid2)
+				     		 	break;
+				     		 	case 3:
+				     		 	polaroidImg.setImage(images.polaroid3)
+				     		 	break;
+				     		 	case 4:
+				     		 	polaroidImg.setImage(images.polaroid4)
+				     		 	break;
+				     		 }
+				     		
+				     		/*pinAnswer.setX(x)
+				     		pinAnswer.setY(y)*/
+
 						    //stoppar animationer vid tryck på nästaknappen
 						    anim_1point.stop();
 						    anim_2point.stop();
@@ -398,11 +430,8 @@
 						    anim_4point.stop();
 						    anim_5point.stop();
 
-						    i++;
-						    text_quest.setText("hej" + i);
-						    //Kommentera av detta om du har tillgång till DB
-						    //circle2.setX(array[i].coordx)
-					     	//circle2.setY(array[i].coordy)
+						 
+						    
 					     	star1.setFill(0);
 					     	star2.setFill(0);
 					     	star3.setFill(0);
@@ -411,15 +440,22 @@
 
 						    sound_btn.play();
 					     	layer.draw();
+
+					     	if(i == 4)
+					     		alert("Game over");
 				     	});
 
 				     	group_start.on('tap click', function(){
 				     		sound_btn.play();
 				     		layer_start.clear();
 				     		i++;
-				     		text_quest.setText("hej" + i)
-				     		//circle2.setX(array[i].coordx)
-				     		//circle2.setY(array[i].coordy)
+				     		/*text_quest.setText(array[i].q)
+				     		x = parseFloat(array[i].coordx)*(window.innerWidth/1745)
+				     		y = parseFloat(array[i].coordy)*(window.innerHeight/889)
+							console.log(window.innerHeight)
+				     		
+				     		pinAnswer.setX(x)
+				     		pinAnswer.setY(y)*/
 				     		layer.draw();
 				     	});
 
@@ -513,6 +549,10 @@
 					//Sökväg till bilder
 					var sources = {
 					 	polaroid: 'http://cloud.lomography.com/477/576/40/02c075b18ecee79a47211e3eb1aee9d566d187.jpg',
+					 	polaroid1: 'http://snorah.files.wordpress.com/2013/03/20130305-153419.jpg',
+					 	polaroid2: 'http://res.moviezine.se.s3-external-3.amazonaws.com/15333/15333656d510dc34b7046d20362fe1e3/photo_l.jpg',
+					 	polaroid3: 'http://fotbollskorren.se/wp-content/uploads/sites/59/2013/10/brasilia-2-1024x567.jpg',
+					 	polaroid4: 'http://www.thatfilmguy.net/wp-content/uploads/2012/08/Blood-Diamond-300x199.jpg',
 					 	pinQuestion: 'img/pin_red.png',
 					 	pinAnswer: 'img/pin_green.png'
 					 };
