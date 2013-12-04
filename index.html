@@ -249,20 +249,21 @@
 			 		   	rect_quest_count = new Kinetic.Rect(rect_quest_count_layout)
 
 			 		   	//fyllningen till frågeräknargrafiken
-			 		   	rect_quest_fill = new Kinetic.Rect(rect_quest_fill_layout)
+			 		   	rect_quest_fill1 = new Kinetic.Rect(rect_quest_fill_layout1)
+			 		   	rect_quest_fill2 = new Kinetic.Rect(rect_quest_fill_layout2)
+			 		   	rect_quest_fill3 = new Kinetic.Rect(rect_quest_fill_layout3)
+			 		   	rect_quest_fill4 = new Kinetic.Rect(rect_quest_fill_layout4)
+			 		   	rect_quest_fill5 = new Kinetic.Rect(rect_quest_fill_layout5)
+
 
 			 		   	//Stjärnor för poängsystem
 			 		   	starTotal = new Kinetic.Star(starTotal_layout);
 			 		   	text_starTotal = new Kinetic.Text(text_starTotal_layout);
-			 		   	star1 = new Kinetic.Star(star_layout);
-			 		   	star2 = new Kinetic.Star(star_layout);
-			 		   	star2.setX(67.4);
-			 		   	star3 = new Kinetic.Star(star_layout);
-			 		   	star3.setX(68.8);
-			 		   	star4 = new Kinetic.Star(star_layout);
-			 		   	star4.setX(70.2);
-			 		   	star5 = new Kinetic.Star(star_layout);
-			 		   	star5.setX(71.6);
+			 		   	star1 = new Kinetic.Star(star1_layout);
+			 		   	star2 = new Kinetic.Star(star2_layout);
+			 		   	star3 = new Kinetic.Star(star3_layout);
+			 		   	star4 = new Kinetic.Star(star4_layout);
+			 		   	star5 = new Kinetic.Star(star5_layout);
 
 				      	//Detta är nödvändigt för att få punkten på samma ställe över alla plattformar
 				      	//Man sätter skalningen på bakgrunden genom width och height, denna sätts alltid
@@ -293,6 +294,9 @@
 					        pinQuestion.setDraggable(false)
 
 					  		line.setPoints([pinAnswer.getPosition().x, pinAnswer.getPosition().y, pinQuestion.getPosition().x, pinQuestion.getPosition().y]);
+
+
+
 					  		layer.add(line);
 					        layer.add(pinAnswer);
 
@@ -312,18 +316,47 @@
 			 				console.log(points);
 			                //Om negativ poäng, så får användaren ingen poäng<
 			                if(points<=1/16)
+			                {
 			                	points = 5;
-
+			                	star1.setFill('yellow');
+			                	star2.setFill('yellow');
+			                	star3.setFill('yellow');
+			                	star4.setFill('yellow');
+			                	star5.setFill('yellow');
+			                	anim_5point.start();		//startar animation för 5 poäng
+			                }
+			                	
 			                else if(points<=1/8)
+			                {
 			                	points =4;
+			                	star1.setFill('yellow');
+			                	star2.setFill('yellow');
+			                	star3.setFill('yellow');
+			                	star4.setFill('yellow');
+			                	anim_4point.start();		//startar animation för 4 poäng
+			                }
+
 
 			                else if(points<=1/4)
+			                {
 			                	points =3;
+			                	star1.setFill('yellow');
+			                	star2.setFill('yellow');
+			                	star3.setFill('yellow');
+			                	anim_3point.start();		//startar animation för 3 poäng
+			                }
+			                	
 
 			                else if(points<=1/2)
+			                {
 			                	points =2;
+			                	star1.setFill('yellow');
+			                	star2.setFill('yellow');
+			                	anim_2point.start();		//startar animation för 2 poäng
+			                }
 
 			                else if(points>1/2)
+			                {
 			                	points =1;
 
 					        var text_points = new Kinetic.Text({
@@ -335,19 +368,50 @@
 				    	    	fill: 'white',
 				    	    	visible: true
 				    	  	});
+
+			                	star1.setFill('yellow');
+			                	anim_1point.start();		//startar animation för 1 poäng
+			                }
+			                	
 					        
 					        //Summerar varje frågas poäng till en totalpott. Skriver ut denna vid stjärnan.
 							sum = sum + points;
 							text_starTotal.setText('x' + ' ' + sum.toFixed(0));
 
 					        //Fyller frågeräknargrafiken med i många femtedelar
-					        rect_quest_fill.setVisible(true)
-				  			rect_quest_fill.setWidth(percent_width*(7/5)*(i+1)) 
-							
+					        if(i == 0)
+					        	rect_quest_fill1.setFill('green')
+					        else if(i == 1)
+					        {
+					        	rect_quest_fill1.setFill('green')
+					        	rect_quest_fill2.setFill('green')	
+					        }
+					        else if(i==2)
+					        {
+					        	rect_quest_fill1.setFill('green')
+					        	rect_quest_fill2.setFill('green')
+					        	rect_quest_fill3.setFill('green')
+					        }
+					        else if(i==3)
+					        {
+					        	rect_quest_fill1.setFill('green')
+					        	rect_quest_fill2.setFill('green')
+					        	rect_quest_fill3.setFill('green')
+					        	rect_quest_fill4.setFill('green')
+					        }
+							else if(i==4)
+							{
+					        	rect_quest_fill1.setFill('green')
+					        	rect_quest_fill2.setFill('green')
+					        	rect_quest_fill3.setFill('green')
+					        	rect_quest_fill4.setFill('green')
+								rect_quest_fill5.setFill('green')
+							}
+								
+
 							layer.add(text_starTotal);			   	  
 			   	  			layer.add(rect_quest_count)
-				    		layer.add(rect_quest_fill);
-					        layer.add(text_points);
+
 					        layer.add(text_ans);
 					        pinAnswer.setVisible(true);
 					        rect_next.setVisible(true);
@@ -355,13 +419,16 @@
 					        text_ans.setVisible(true);
 
 					       	layer.add(pinQuestion);
+
+					      
+
 					        //circle.setFill('green');
 					        //layer.add(circle);
 
 					        layer.draw();
 					        text_points.setVisible(false);
 				        
-				        //setInterval(function(){window.location="http://www.carlenglund.se/atlas"},2000);
+				        
 
 	     				});
 
@@ -389,27 +456,72 @@
 						    pinQuestion.setPosition(percent_width*50,percent_height*50);
 						    pinQuestion.setDraggable(true);
 
-						    i++;
-						    text_quest.setText("hej" + i);
-						    //Kommentera av detta om du har tillgång till DB
-						    //circle2.setX(array[i].coordx)
-					     	//circle2.setY(array[i].coordy)
+						     	pinAnswer.setVisible(false);
+						    pinQuestion.setPosition(percent_width*50,percent_height*50);
+						    pinQuestion.setDraggable(true);
+					       	 i++;
+						    	
+						    //text_quest.setText(array[i].q)
+						   
+				     		 /*x = parseFloat(array[i].coordx)*(window.innerWidth/1745)
+				     		 y = parseFloat(array[i].coordy)*(window.innerHeight/889)
+				     		 console.log(i);*/
+				     		 switch(i)
+				     		 {
+				     		 	case 1: 
+				     		 	polaroidImg.setImage(images.polaroid1)
+				     		 	break;
+				     		 	case 2:
+				     		 	polaroidImg.setImage(images.polaroid2)
+				     		 	break;
+				     		 	case 3:
+				     		 	polaroidImg.setImage(images.polaroid3)
+				     		 	break;
+				     		 	case 4:
+				     		 	polaroidImg.setImage(images.polaroid4)
+				     		 	break;
+				     		 }
+				     		
+				     		/*pinAnswer.setX(x)
+				     		pinAnswer.setY(y)*/
+
+						    //stoppar animationer vid tryck på nästaknappen
+						    anim_1point.stop();
+						    anim_2point.stop();
+						    anim_3point.stop();
+						    anim_4point.stop();
+						    anim_5point.stop();
+
+						 
+						    
+					     	star1.setFill(0);
+					     	star2.setFill(0);
+					     	star3.setFill(0);
+					     	star4.setFill(0);
+					     	star5.setFill(0);
 
 						    sound_btn.play();
 					     	layer.draw();
+
+					     	if(i == 4)
+					     		alert("Game over");
 				     	});
 
 				     	group_start.on('tap click', function(){
 				     		sound_btn.play();
 				     		layer_start.clear();
 				     		i++;
-				     		text_quest.setText("hej" + i)
-				     		//circle2.setX(array[i].coordx)
-				     		//circle2.setY(array[i].coordy)
+				     		/*text_quest.setText(array[i].q)
+				     		x = parseFloat(array[i].coordx)*(window.innerWidth/1745)
+				     		y = parseFloat(array[i].coordy)*(window.innerHeight/889)
+							console.log(window.innerHeight)
+				     		
+				     		pinAnswer.setX(x)
+				     		pinAnswer.setY(y)*/
 				     		layer.draw();
 				     	});
 
-				     	rect_end_btn.on('tap click', function(){
+				     	group_end.on('tap click', function(){
 				     		layer_end.clear();
 				     		i=0;
 
@@ -419,7 +531,12 @@
 				     	//Lägger till cirkeln till lagret och sedan lägger lagret i stagen
 				   	  	//layer.add(rect);
 					    layer.add(rect_bar);
-			   	  		layer.add(rect_quest_count)
+			   	  		layer.add(rect_quest_count);
+			    		layer.add(rect_quest_fill1);
+			    		layer.add(rect_quest_fill2);
+			    		layer.add(rect_quest_fill3);
+			    		layer.add(rect_quest_fill4);
+			    		layer.add(rect_quest_fill5);
 					    layer.add(text_quest);
 					    layer.add(polaroidImg);
 					    layer.add(pinQuestion);
@@ -437,8 +554,8 @@
 				      	group_next.add(text_next_btn);
 				      	layer.add(group_next);
 
-				      	//group_end.add(rect_end_btn);
-				      	//group_end.add(text_end_btn);	
+				      	group_end.add(rect_start_btn);
+				      	group_end.add(text_end_btn);	
 				 
 
 				      	layer_end.add(rect_end_look);
@@ -446,9 +563,9 @@
 				      	layer_end.add(text_quest_end);
 				      	layer_end.add(text_result_end);
 				      	
-				      	layer_end.add(rect_start_btn);
-						layer_end.add(text_end_btn);
-	      				//layer_end.add(group_end);
+				      	//layer_end.add(rect_start_btn);
+						//layer_end.add(text_end_btn);
+	      				layer_end.add(group_end);
 
 				     	group_start.add(rect_start_btn);
 				     	group_start.add(text_quest_start_btn);
@@ -461,12 +578,60 @@
 
 				    	stage.add(layer);
 				    	stage.add(layer_start);
-				        //stage.add(layer_end);
+
+				    	//Animationer
+				    	var period = 2000;
+
+				    	//Här är 5 olika variabler för animationer för de fem olika animationstillfällena
+				    	//De skulle kunna läggas in i database.js
+				    	var anim_1point = new Kinetic.Animation(function(frame) {
+					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        
+					        star1.setScale(scale);
+					      }, layer);
+
+				    	var anim_2point = new Kinetic.Animation(function(frame) {
+					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        
+					        star1.setScale(scale);
+					        star2.setScale(scale);
+					      }, layer);
+
+				    	var anim_3point = new Kinetic.Animation(function(frame) {
+					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        
+					        star1.setScale(scale);
+					        star2.setScale(scale);
+					        star3.setScale(scale);
+					      }, layer);
+
+				    	var anim_4point = new Kinetic.Animation(function(frame) {
+					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        
+					        star1.setScale(scale);
+					        star2.setScale(scale);
+					        star3.setScale(scale);
+					        star4.setScale(scale);
+					      }, layer);
+
+				    	var anim_5point = new Kinetic.Animation(function(frame) {
+					        var scale = Math.sin(frame.time * 3 * Math.PI / period)*0.1 + 0.9;
+					        
+					        star1.setScale(scale);
+					        star2.setScale(scale);
+					        star3.setScale(scale);
+					        star4.setScale(scale);
+					        star5.setScale(scale);
+					      }, layer);
 					}; 
 					
 					//Sökväg till bilder
 					var sources = {
 					 	polaroid: 'http://cloud.lomography.com/477/576/40/02c075b18ecee79a47211e3eb1aee9d566d187.jpg',
+					 	polaroid1: 'http://snorah.files.wordpress.com/2013/03/20130305-153419.jpg',
+					 	polaroid2: 'http://res.moviezine.se.s3-external-3.amazonaws.com/15333/15333656d510dc34b7046d20362fe1e3/photo_l.jpg',
+					 	polaroid3: 'http://fotbollskorren.se/wp-content/uploads/sites/59/2013/10/brasilia-2-1024x567.jpg',
+					 	polaroid4: 'http://www.thatfilmguy.net/wp-content/uploads/2012/08/Blood-Diamond-300x199.jpg',
 					 	pinQuestion: 'img/pin_red.png',
 					 	pinAnswer: 'img/pin_green.png'
 					 };

@@ -1,4 +1,4 @@
-  /*$(document).ready(function() {
+ /* $(document).ready(function() {
   $.ajax({
       url: 'database.php',
       dataType: 'json',
@@ -17,8 +17,8 @@
   {
    array = arr;
    console.log(array);
-  }*/
-
+  }
+*/
 var percent_width = window.innerWidth/100;
 var percent_height = window.innerHeight/100;
 
@@ -95,7 +95,7 @@ var text_quest_layout = {
     x: percent_width*20,
     y: percent_height*91,
     text: 'Författaren till klassikern "Brott och straff" är född \n i hans fosterlands huvudstad, vart ligger denna huvudstad?',
-    fontSize: percent_height*3,
+    fontSize: percent_height*2,
     fontFamily: 'Calibri',
     fill: 'white'     
 };
@@ -142,7 +142,7 @@ var rect_bar_layout = {
 
 var rect_quest_count_layout = {
     x: percent_width*66,
-    y: percent_height*94,
+    y: percent_height*95,
     width: percent_width*7,
     height: percent_height*4,
     stroke: 'white',
@@ -150,20 +150,60 @@ var rect_quest_count_layout = {
 
 };
 
-var rect_quest_fill_layout = {
+var rect_quest_fill_layout1 = {
     x: percent_width*66,
-    y: percent_height*94,
-    width: 0,
+    y: percent_height*95,
+    width: percent_width*(7/5),
     height: percent_height*4,
-    fill: 'green',
-    visible: false
+    stroke: 'white',
+    strokeWidth: 1,
+
+};
+
+var rect_quest_fill_layout2 = {
+    x: percent_width*66,
+    y: percent_height*95,
+    width: percent_width*(7/5)*2,
+    height: percent_height*4,
+    stroke: 'white',
+    strokeWidth: 1
+
+};
+
+var rect_quest_fill_layout3 = {
+    x: percent_width*66,
+    y: percent_height*95,
+    width: percent_width*(7/5)*3,
+    height: percent_height*4,
+    stroke: 'white',
+    strokeWidth: 1
+
+};
+
+var rect_quest_fill_layout4 = {
+    x: percent_width*66,
+    y: percent_height*95,
+    width: percent_width*(7/5)*4,
+    height: percent_height*4,
+    stroke: 'white',
+    strokeWidth: 1
+
+};
+
+var rect_quest_fill_layout5 = {
+    x: percent_width*66,
+    y: percent_height*95,
+    width: percent_width*(7/5)*5,
+    height: percent_height*4,
+    stroke: 'white',
+    strokeWidth: 1,
 
 };
 
 var text_starTotal_layout = {
     x: percent_width*87,
     y: percent_height*93,
-    text: 'x',
+    text: 'x 0',
     fontSize: percent_height*3,
     fontFamily: 'Calibri',
     fill: 'white',
@@ -181,9 +221,20 @@ var starTotal_layout = {
       //strokeWidth: percent_width*0.1
 };
 
-var star_layout = {
-      x: percent_width*66,
-      y: percent_height*91,
+var star1_layout = {
+      x: percent_width*64.5,
+      y: percent_height*92,
+      numPoints: 5,
+      innerRadius: percent_width*0.6,
+      outerRadius: percent_width*1.2,
+      fill: 0,
+      stroke: 'white',
+      strokeWidth: percent_width*0.1
+};
+
+var star2_layout = {
+      x: percent_width*67,
+      y: percent_height*92,
       numPoints: 5,
       innerRadius: percent_width*0.6,
       outerRadius: percent_width*1.2,
@@ -253,3 +304,36 @@ var text_end_btn_layout = {
 };
 
 //---------------------------------
+var star3_layout = {
+      x: percent_width*69.5,
+      y: percent_height*92,
+      numPoints: 5,
+      innerRadius: percent_width*0.6,
+      outerRadius: percent_width*1.2,
+      fill: 0,
+      stroke: 'white',
+      strokeWidth: percent_width*0.1
+};
+
+var star4_layout = {
+      x: percent_width*72,
+      y: percent_height*92,
+      numPoints: 5,
+      innerRadius: percent_width*0.6,
+      outerRadius: percent_width*1.2,
+      fill: 0,
+      stroke: 'white',
+      strokeWidth: percent_width*0.1
+};
+
+var star5_layout = {
+      x: percent_width*74.5,
+      y: percent_height*92,
+      numPoints: 5,
+      innerRadius: percent_width*0.6,
+      outerRadius: percent_width*1.2,
+      fill: 0,
+      stroke: 'white',
+      strokeWidth: percent_width*0.1
+};
+
