@@ -291,7 +291,7 @@
 				     	//Sätter punkterna linjen ska gå emellan
 				     	//lägger till linjen och cirkeln till lagret och ritar om
 				     	pinQuestion.on('dragend', function() {  
-					        pinQuestion.setDraggable(false)
+					        //pinQuestion.setDraggable(false)
 
 					  		line.setPoints([pinAnswer.getPosition().x, pinAnswer.getPosition().y, pinQuestion.getPosition().x, pinQuestion.getPosition().y]);
 
@@ -426,7 +426,7 @@
 					        //layer.add(circle);
 
 					        layer.draw();
-					        text_points.setVisible(false);
+					        //text_points.setVisible(false);
 				        
 				        
 
@@ -438,13 +438,21 @@
 				     	//sätter circle, line och circle2 till utgångsvärdena
 				     	//sätter rect_next, text_ans och text_next_btn till osynliga
 				     	group_next.on('tap click', function(){
-					     	if(i == 0)
+					     	flag = true;
+					     	if(i == 2)
 					     	{
 					     		//rita slutskärmen
 					     		layer_end.draw();
+						   	 	pinQuestion.setVisible(false);
+ 						     	line.setAttrs(lineDrawn);
+ 						     	text_result_end.setText('Du fick ' + sum.toFixed(0) + ' poäng');
 					     		stage.add(layer_end);
+					     		var flag = false;
 					     	}
 					     	//circle.setAttrs(circleCenter_layout)
+					     	if(flag)
+					     	{
+					     	console.log("hejhej");
 					     	line.setAttrs(lineDrawn);
 					     	//circle2.setAttrs(circleAnswer)
 					     	rect_next.setVisible(false);
@@ -456,9 +464,6 @@
 						    pinQuestion.setPosition(percent_width*50,percent_height*50);
 						    pinQuestion.setDraggable(true);
 
-						     	pinAnswer.setVisible(false);
-						    pinQuestion.setPosition(percent_width*50,percent_height*50);
-						    pinQuestion.setDraggable(true);
 					       	 i++;
 						    	
 						    //text_quest.setText(array[i].q)
@@ -502,9 +507,9 @@
 
 						    sound_btn.play();
 					     	layer.draw();
+					     	}
+					     	
 
-					     	if(i == 4)
-					     		alert("Game over");
 				     	});
 
 				     	group_start.on('tap click', function(){
@@ -522,13 +527,38 @@
 				     	});
 
 				     	group_end.on('tap click', function(){
-				     		layer_end.clear();
-				     		i=0;
+					   	 	layer_end.clear();
+					   	 	pinQuestion.setVisible(true)
+					   	 	pinAnswer.setVisible(false);
+					    	pinQuestion.setPosition(percent_width*50,
+				    		percent_height*50);
+						    pinQuestion.setDraggable(true);
+						    i=0;
+						    sum = 0;
+
+						    text_starTotal.setText('x' + ' ' + sum.toFixed(0));
+
+						    anim_1point.stop();
+						    anim_2point.stop();
+						    anim_3point.stop();
+						    anim_4point.stop();
+						    anim_5point.stop();
+
+						 
+						    
+					     	star1.setFill(0);
+					     	star2.setFill(0);
+					     	star3.setFill(0);
+					     	star4.setFill(0);
+					     	star5.setFill(0);
+
+					        //circle.setFill('green');
+					        //layer.add(circle);
 
 				     		layer.draw();
-				     	});
 
-				     	//Lägger till cirkeln till lagret och sedan lägger lagret i stagen
+				     	});
+				     		
 				   	  	//layer.add(rect);
 					    layer.add(rect_bar);
 			   	  		layer.add(rect_quest_count);
