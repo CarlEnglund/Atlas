@@ -42,17 +42,50 @@ var rect_meny_layout = {
 };
 
 var text_quest_meny_layout = {
-    x: percent_width*50,
-    y: percent_height*40,
-    text: 'Hallå där!',
-    fontSize: percent_height*5,
+    x: percent_width*30,
+    y: percent_height*18,
+    text: 'Atlas',
+    fontSize: 55,
     fontFamily: 'Calibri',
-    fill: 'black'
+    offsetX: (percent_width*50)/2,
+    fill: 'White'
+};
+
+var text_meny_slogan_layout = {
+    x: percent_width*51,
+    y: percent_height*26,
+    text: 'Världens roligaste kartspel!',
+    fontSize: 30,
+    fontFamily: 'Calibri',
+    offsetX: (percent_width*50)/2,
+    fill: 'Black'
+};
+
+var text_howto_info_layout = {
+    x: percent_width*65,
+    y: percent_height*35,
+    text: 'Atlas spelas genom att man drar den röda \npinnen till det mål på kartan som svarar på \nfrågan. Tryck på nästaknappen i högra \nhörnet för att komma vidare till nästa fråga.',
+    fontSize: percent_height*4,
+    fontFamily: 'Calibri',
+    offsetX: (percent_width*50)/2,
+    fill: 'Black',
+    visible: false
+};
+
+var text_about_info_layout = {
+    x: percent_width*65,
+    y: percent_height*35,
+    text: 'Atlas har tagits fram som ett projekt i \nkursen TNM040.\nVi som arbetat med det här projektet \nheter Petra Öhlin, Mattias Palmgren, \nCarl Englund, Johan Henriksson och \nJohan Reimann.',
+    fontSize: percent_height*4,
+    fontFamily: 'Calibri',
+    offsetX: (percent_width*50)/2,
+    fill: 'Black',
+    visible: false
 };
 
 var rect_start_btn_layout =  {
-    x: percent_width*50,
-    y: percent_height*50,
+    x: percent_width*68,
+    y: percent_height*66,
     width: percent_width*10,
     height: percent_height*10,
     offsetX:  (percent_width*10)/2,
@@ -61,10 +94,48 @@ var rect_start_btn_layout =  {
 };
 
 var text_quest_start_btn_layout = {
-    x: percent_width*50,
-    y: percent_height*50,
+    x: percent_width*68,
+    y: percent_height*66,
     text:'Start',
-    fontSize: percent_height*3,
+    fontSize: percent_height*5,
+    fontFamily: 'Calibri',
+    fill: 'black' 
+};
+
+var rect_about_btn_layout =  {
+    x: percent_width*32,
+    y: percent_height*57,
+    width: percent_width*10,
+    height: percent_height*10,
+    offsetX:  (percent_width*10)/2,
+    offsetY: (percent_height*10)/2,
+    fill: 'lightblue',
+};
+
+var text_about_btn_layout = {
+    x: percent_width*32,
+    y: percent_height*57,
+    text:'Om Atlas',
+    fontSize: percent_height*5,
+    fontFamily: 'Calibri',
+    fill: 'black' 
+};
+
+var rect_howto_btn_layout =  {
+    x: percent_width*32,
+    y: percent_height*42,
+    width: percent_width*10,
+    height: percent_height*10,
+    offsetX:  (percent_width*10)/2,
+    offsetY: (percent_height*10)/2,
+    fill: 'lightblue',
+};
+
+var text_howto_btn_layout = {
+    x: percent_width*32,
+    y: percent_height*42,
+    text:'Hjälp',
+    fontSize:percent_height*5,
     fontFamily: 'Calibri',
     fill: 'black' 
 };

@@ -75,11 +75,15 @@
 				        //Grupp som grupperar nästa-knapp med nästa-text
 				        //Grupperar alltså rect_next och text_next_btn
 				        var group_start = new Kinetic.Group({});
+				        var group_about = new Kinetic.Group({});
+				        var group_howto = new Kinetic.Group({});
 				        var group_next = new Kinetic.Group({});
 				        var group_end = new Kinetic.Group({});
 
-
-
+				        rect_start = new Kinetic.Rect(rect_start_btn_layout)
+				        rect_about_btn = new Kinetic.Rect(rect_about_btn_layout)
+				        rect_howto_btn = new Kinetic.Rect(rect_howto_btn_layout)
+				        rect_start_btn = new Kinetic.Rect(rect_start_btn_layout)
 						
 				       	//------------ END-RUTA --------------
 
@@ -129,13 +133,16 @@
 				        	y: rect_meny.getHeight()/2
 				        });
 
-				        text_quest_meny = new Kinetic.Text(text_quest_meny_layout)  
+				        //Menytext
+				        text_quest_meny = new Kinetic.Text(text_quest_meny_layout) 
+				        text_meny_slogan = new Kinetic.Text(text_meny_slogan_layout)
+				        text_howto_info = new Kinetic.Text(text_howto_info_layout)
+				        text_about_info = new Kinetic.Text(text_about_info_layout)
 
 				        text_quest_meny.setOffset({
 				      		x: text_quest_meny.getWidth()/2,
 				      		y: text_quest_meny.getHeight()/2
 				      	});
-
 
 				        text_quest_start_btn = new Kinetic.Text(text_quest_start_btn_layout)
 
@@ -144,6 +151,19 @@
 				        	y: text_quest_start_btn.getHeight()/2
 				        })
 
+				        text_howto_btn = new Kinetic.Text(text_howto_btn_layout)
+
+				       	text_howto_btn.setOffset({
+				        	x: text_howto_btn.getWidth()/2,
+				        	y: text_howto_btn.getHeight()/2
+				        })
+
+				        text_about_btn = new Kinetic.Text(text_about_btn_layout)
+
+				       	text_about_btn.setOffset({
+				        	x: text_about_btn.getWidth()/2,
+				        	y: text_about_btn.getHeight()/2
+				        })
 
 				        rect_start_btn = new Kinetic.Rect(rect_start_btn_layout)
 
@@ -156,7 +176,6 @@
 							opacity: 0.8
 
 						});
-
 
 				        //Skapar cirkelobjektet
 				        //circle = new Kinetic.Circle(circleCenter_layout)
@@ -300,8 +319,6 @@
 					  		layer.add(line);
 					        layer.add(pinAnswer);
 
-					        //Räknar ut poängen, 1000 - längden på line
-					        //Räknar ut poängen, 700 - skalad längd^2
 			                var points = Math.sqrt(Math.pow((pinAnswer.getPosition().x - pinQuestion.getPosition().x)/window.innerWidth,2) 
 			                   + Math.pow((pinAnswer.getPosition().y - pinQuestion.getPosition().y)/window.innerHeight,2));
 			 
@@ -526,6 +543,22 @@
 				     		layer.draw();
 				     	});
 
+				     	group_about.on('tap click', function(){
+				     		sound_btn.play();
+				     		text_about_info.setVisible(true);
+				     		text_howto_info.setVisible(false);
+				     		
+				     		layer_start.draw();
+				     	});
+
+				     	group_howto.on('tap click', function(){
+				     		sound_btn.play();
+				     		text_howto_info.setVisible(true);
+				     		text_about_info.setVisible(false);
+
+				     		layer_start.draw();
+				     	});
+
 				     	group_end.on('tap click', function(){
 					   	 	layer_end.clear();
 					   	 	pinQuestion.setVisible(true)
@@ -599,11 +632,22 @@
 
 				     	group_start.add(rect_start_btn);
 				     	group_start.add(text_quest_start_btn);
+
+				     	group_about.add(rect_about_btn);
+				     	group_about.add(text_about_btn);
+
+				     	group_howto.add(rect_howto_btn);
+				     	group_howto.add(text_howto_btn);
 				     
 				     	layer_start.add(rect_start_look);
 				     	layer_start.add(rect_meny);
 				     	layer_start.add(text_quest_meny);
+				     	layer_start.add(text_meny_slogan);
 				     	layer_start.add(group_start);
+				     	layer_start.add(group_about);
+				     	layer_start.add(group_howto);
+				     	layer_start.add(text_about_info);
+				     	layer_start.add(text_howto_info);
 				     	layer_start.draw();
 
 				    	stage.add(layer);
