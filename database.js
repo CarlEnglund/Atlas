@@ -64,8 +64,8 @@ var text_meny_slogan_layout = {
 var text_howto_info_layout = {
     x: percent_width*65,
     y: percent_height*35,
-    text: 'Så här spelar man!',
-    fontSize: percent_height*5,
+    text: 'Atlas spelas genom att man drar den röda \npinnen till det mål på kartan som svarar på \nfrågan. Tryck på nästaknappen i högra \nhörnet för att komma vidare till nästa fråga.',
+    fontSize: percent_height*4,
     fontFamily: 'Calibri',
     offsetX: (percent_width*50)/2,
     fill: 'Black',
@@ -75,8 +75,8 @@ var text_howto_info_layout = {
 var text_about_info_layout = {
     x: percent_width*65,
     y: percent_height*35,
-    text: 'Här är vi! Vi är duktiga!',
-    fontSize: percent_height*5,
+    text: 'Atlas har tagits fram som ett projekt i \nkursen TNM040.\nVi som arbetat med det här projektet \nheter Petra Öhlin, Mattias Palmgren, \nCarl Englund, Johan Henriksson och \nJohan Reimann.',
+    fontSize: percent_height*4,
     fontFamily: 'Calibri',
     offsetX: (percent_width*50)/2,
     fill: 'Black',
@@ -116,7 +116,7 @@ var text_about_btn_layout = {
     x: percent_width*32,
     y: percent_height*57,
     text:'Om Atlas',
-    fontSize: 30,
+    fontSize: percent_height*5,
     fontFamily: 'Calibri',
     fill: 'black' 
 };
@@ -134,8 +134,8 @@ var rect_howto_btn_layout =  {
 var text_howto_btn_layout = {
     x: percent_width*32,
     y: percent_height*42,
-    text:'How to',
-    fontSize: 30,
+    text:'Hjälp',
+    fontSize:percent_height*5,
     fontFamily: 'Calibri',
     fill: 'black' 
 };
