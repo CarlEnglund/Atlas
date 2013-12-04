@@ -203,15 +203,33 @@
 						line = new Kinetic.Line(lineDrawn)
 
 						//Definierar egenskaper för de bildobjekt som laddas in
-						//Polaroid
-						var polaroidImg = new Kinetic.Image({
-						    image: images.polaroid,
-						    x: percent_width*2,
-						    y: percent_height*63,
-						    offset: [percent_width/ 2, percent_height / 2],
+						//Polaroid-frame
+						var polaroidFrame = new Kinetic.Image({
+						    image: images.polaroid_frame,
+						    x: percent_width*9,
+						    y: percent_height*78,
 						    width: percent_width*15,
 						    height: percent_height*30
 						});
+
+						polaroidFrame.setOffset({
+							x: polaroidFrame.getWidth() / 2,
+							y: polaroidFrame.getHeight() / 2
+						})
+
+						//Fråge-bild
+						var polaroidQuestion = new Kinetic.Image({
+						    image: images.question0,
+						    x: percent_width*9,
+						    y: percent_height*76,
+						    width: percent_width*13.4,
+						    height: percent_height*22.4
+						});
+
+						polaroidQuestion.setOffset({
+							x: polaroidQuestion.getWidth() / 2,
+							y: polaroidQuestion.getHeight() / 2
+						})
 
 						//Frågepin
 						var pinQuestion = new Kinetic.Image({
@@ -607,7 +625,8 @@
 			    		layer.add(rect_quest_fill4);
 			    		layer.add(rect_quest_fill5);
 					    layer.add(text_quest);
-					    layer.add(polaroidImg);
+					    layer.add(polaroidFrame);
+					    layer.add(polaroidQuestion);
 					    layer.add(pinQuestion);
 					    //layer.add(circle);
 					    layer.add(pinAnswer);
@@ -707,11 +726,12 @@
 					
 					//Sökväg till bilder
 					var sources = {
-					 	polaroid: 'http://cloud.lomography.com/477/576/40/02c075b18ecee79a47211e3eb1aee9d566d187.jpg',
-					 	polaroid1: 'http://snorah.files.wordpress.com/2013/03/20130305-153419.jpg',
-					 	polaroid2: 'http://res.moviezine.se.s3-external-3.amazonaws.com/15333/15333656d510dc34b7046d20362fe1e3/photo_l.jpg',
-					 	polaroid3: 'http://fotbollskorren.se/wp-content/uploads/sites/59/2013/10/brasilia-2-1024x567.jpg',
-					 	polaroid4: 'http://www.thatfilmguy.net/wp-content/uploads/2012/08/Blood-Diamond-300x199.jpg',
+					 	polaroid_frame: 'img/polaroid_frame.png',
+					 	question0: 'http://ladda-upp.se/files/2013/b79883.png',
+					 	question1: 'http://snorah.files.wordpress.com/2013/03/20130305-153419.jpg',
+					 	question2: 'http://res.moviezine.se.s3-external-3.amazonaws.com/15333/15333656d510dc34b7046d20362fe1e3/photo_l.jpg',
+					 	question3: 'http://fotbollskorren.se/wp-content/uploads/sites/59/2013/10/brasilia-2-1024x567.jpg',
+					 	question4: 'http://www.thatfilmguy.net/wp-content/uploads/2012/08/Blood-Diamond-300x199.jpg',
 					 	pinQuestion: 'img/pin_red.png',
 					 	pinAnswer: 'img/pin_green.png'
 					 };
