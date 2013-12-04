@@ -287,7 +287,7 @@ var starTotal_layout = {
       numPoints: 5,
       innerRadius: percent_width*0.5,
       outerRadius: percent_width*1,
-      fill: '#dfbb00',
+      fill: 'white',
       //stroke: '#ffcb00',
       //strokeWidth: percent_width*0.1
 };
