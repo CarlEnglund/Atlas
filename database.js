@@ -42,18 +42,50 @@ var rect_meny_layout = {
 };
 
 var text_quest_meny_layout = {
-    x: percent_width*50,
-    y: percent_height*30,
-    text: 'MENY',
-    fontSize: 50,
+    x: percent_width*30,
+    y: percent_height*18,
+    text: 'Atlas',
+    fontSize: 55,
     fontFamily: 'Calibri',
     offsetX: (percent_width*50)/2,
-    fill: 'black'
+    fill: 'White'
+};
+
+var text_meny_slogan_layout = {
+    x: percent_width*51,
+    y: percent_height*26,
+    text: 'Världens roligaste kartspel!',
+    fontSize: 30,
+    fontFamily: 'Calibri',
+    offsetX: (percent_width*50)/2,
+    fill: 'Black'
+};
+
+var text_howto_info_layout = {
+    x: percent_width*65,
+    y: percent_height*35,
+    text: 'Så här spelar man!',
+    fontSize: 30,
+    fontFamily: 'Calibri',
+    offsetX: (percent_width*50)/2,
+    fill: 'Black',
+    visible: false
+};
+
+var text_about_info_layout = {
+    x: percent_width*65,
+    y: percent_height*35,
+    text: 'Här är vi! Vi är duktiga!',
+    fontSize: 30,
+    fontFamily: 'Calibri',
+    offsetX: (percent_width*50)/2,
+    fill: 'Black',
+    visible: false
 };
 
 var rect_start_btn_layout =  {
-    x: percent_width*50,
-    y: percent_height*50,
+    x: percent_width*68,
+    y: percent_height*66,
     width: percent_width*10,
     height: percent_height*10,
     offsetX:  (percent_width*10)/2,
@@ -62,9 +94,47 @@ var rect_start_btn_layout =  {
 };
 
 var text_quest_start_btn_layout = {
-    x: percent_width*50,
-    y: percent_height*50,
+    x: percent_width*68,
+    y: percent_height*66,
     text:'Start',
+    fontSize: 30,
+    fontFamily: 'Calibri',
+    fill: 'black' 
+};
+
+var rect_about_btn_layout =  {
+    x: percent_width*32,
+    y: percent_height*57,
+    width: percent_width*10,
+    height: percent_height*10,
+    offsetX:  (percent_width*10)/2,
+    offsetY: (percent_height*10)/2,
+    fill: 'lightblue',
+};
+
+var text_about_btn_layout = {
+    x: percent_width*32,
+    y: percent_height*57,
+    text:'Om Atlas',
+    fontSize: 30,
+    fontFamily: 'Calibri',
+    fill: 'black' 
+};
+
+var rect_howto_btn_layout =  {
+    x: percent_width*32,
+    y: percent_height*42,
+    width: percent_width*10,
+    height: percent_height*10,
+    offsetX:  (percent_width*10)/2,
+    offsetY: (percent_height*10)/2,
+    fill: 'lightblue',
+};
+
+var text_howto_btn_layout = {
+    x: percent_width*32,
+    y: percent_height*42,
+    text:'How to',
     fontSize: 30,
     fontFamily: 'Calibri',
     fill: 'black' 
