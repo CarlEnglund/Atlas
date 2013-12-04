@@ -39,6 +39,7 @@
 
 			 		//Laddar in spelytan
 			 		function drawImages(images) {
+				 		//Frågeräknare. -1 ty att den ska nyindexeras till 0 då frågorna hämtas.
 				 		var i = -1;
 
 				        var sound_btn = new Audio('');
@@ -56,6 +57,7 @@
 				        //Skapar lager i stagen
 				        var layer = new Kinetic.Layer();
 						var layer_start = new Kinetic.Layer();
+						var layer_end = new Kinetic.Layer();
 
 				        //Bakgrundslagret där bakgrundsbilden ligger
 				        var layer_background = new Kinetic.Layer();
@@ -63,7 +65,8 @@
 				        //Lägger till lagret i stagen
 				        stage.add(layer_background);
 				        stage.add(layer);
-				        stage.add(layer_start);       
+				        stage.add(layer_start);
+				        stage.add(layer_end);       
 
 				        //Variabler som är procentsatser av window, gör det lätt att placera ut objekt
 				        var percent_width = window.innerWidth/100;
@@ -72,41 +75,75 @@
 				        //Grupp som grupperar nästa-knapp med nästa-text
 				        //Grupperar alltså rect_next och text_next_btn
 				        var group_start = new Kinetic.Group({});
+				        var group_about = new Kinetic.Group({});
+				        var group_howto = new Kinetic.Group({});
 				        var group_next = new Kinetic.Group({});
+				        var group_end = new Kinetic.Group({});
 
 				        rect_start = new Kinetic.Rect(rect_start_btn_layout)
+				        rect_end_btn = new Kinetic.Rect(rect_end_btn_layout)
+				        rect_about_btn = new Kinetic.Rect(rect_about_btn_layout)
+				        rect_howto_btn = new Kinetic.Rect(rect_howto_btn_layout)
+				        rect_start_btn = new Kinetic.Rect(rect_start_btn_layout)
+						
+				       	//------------ END-RUTA --------------
 
-				        var rect_start_look = new Kinetic.Rect({
-					      	x: 0,
-					      	y: 0,
-					      	width: percent_width*100, 
-					      	height: percent_height*100,
-					      	fill: 'black',
-					      	opacity: 0.8
 
+				      	rect_end = new Kinetic.Rect(
+				      		rect_end_layout)
+
+						
+				      	rect_end.setOffset({
+				      		x: rect_end.getWidth()/2,
+				      		y: rect_end.getHeight()/2
 				      	});
 
-						rect_meny = new Kinetic.Rect(rect_meny_layout)        
+				      	rect_end_look = new Kinetic.Rect(rect_end_look_layout)
 
+
+				      	text_quest_end = new Kinetic.Text(text_quest_end_layout)
+
+				      	text_quest_end.setOffset({
+				      		x: text_quest_end.getWidth()/2,
+				      		y: text_quest_end.getHeight()/2
+				      	});
+
+				        text_result_end = new Kinetic.Text(text_result_end_layout)
+
+				        text_result_end.setOffset({
+				      		x: text_result_end.getWidth()/2,
+				      		y: text_result_end.getHeight()/2
+				      	});
+
+				      	//rect_end_btn = new Kinetic.Text(rect_end_btn_layout)
+
+				        text_end_btn = new Kinetic.Text(text_end_btn_layout)
+
+				        text_end_btn.setOffset({
+				        	x: text_end_btn.getWidth()/2,
+				        	y: text_end_btn.getHeight()/2
+				        });
+
+				        //----------------------------------
+				      	
+
+				      	//MENYRUTA
+						rect_meny = new Kinetic.Rect(rect_meny_layout)       
 				       	rect_meny.setOffset({
 				        	x: rect_meny.getWidth()/2,
 				        	y: rect_meny.getHeight()/2
 				        });
 
-
 				        //Menytext
-				        text_quest_meny = new Kinetic.Text(text_quest_meny_layout)  
+				        text_quest_meny = new Kinetic.Text(text_quest_meny_layout) 
+				        text_meny_slogan = new Kinetic.Text(text_meny_slogan_layout)
+				        text_howto_info = new Kinetic.Text(text_howto_info_layout)
+				        text_about_info = new Kinetic.Text(text_about_info_layout)
 
 				        text_quest_meny.setOffset({
-				        	x: text_quest_meny.getWidth()/2,
-				        });
-
-				        rect_start_btn = new Kinetic.Text(rect_start_btn_layout)
-
-				       	/* rect_start_btn.setOffset({
-				        	x: rect_start_btn.getWidth()/4,
-				        	y: rect_start_btn.getHeight()/4
-				        })*/
+				      		x: text_quest_meny.getWidth()/2,
+				      		y: text_quest_meny.getHeight()/2
+				      	});
 
 				        text_quest_start_btn = new Kinetic.Text(text_quest_start_btn_layout)
 
@@ -114,6 +151,32 @@
 				        	x: text_quest_start_btn.getWidth()/2,
 				        	y: text_quest_start_btn.getHeight()/2
 				        })
+
+				        text_howto_btn = new Kinetic.Text(text_howto_btn_layout)
+
+				       	text_howto_btn.setOffset({
+				        	x: text_howto_btn.getWidth()/2,
+				        	y: text_howto_btn.getHeight()/2
+				        })
+
+				        text_about_btn = new Kinetic.Text(text_about_btn_layout)
+
+				       	text_about_btn.setOffset({
+				        	x: text_about_btn.getWidth()/2,
+				        	y: text_about_btn.getHeight()/2
+				        })
+
+				        rect_start_btn = new Kinetic.Rect(rect_start_btn_layout)
+
+						var rect_start_look = new Kinetic.Rect({
+							x: 0,
+							y: 0,
+							width: percent_width*100, 
+							height: percent_height*100,
+							fill: 'black',
+							opacity: 0.8
+
+						});
 
 				        //Skapar cirkelobjektet
 				        //circle = new Kinetic.Circle(circleCenter_layout)
@@ -248,7 +311,7 @@
 				     	//Sätter punkterna linjen ska gå emellan
 				     	//lägger till linjen och cirkeln till lagret och ritar om
 				     	pinQuestion.on('dragend', function() {  
-					        pinQuestion.setDraggable(false)
+					        //pinQuestion.setDraggable(false)
 
 					  		line.setPoints([pinAnswer.getPosition().x, pinAnswer.getPosition().y, pinQuestion.getPosition().x, pinQuestion.getPosition().y]);
 
@@ -257,8 +320,6 @@
 					  		layer.add(line);
 					        layer.add(pinAnswer);
 
-					        //Räknar ut poängen, 1000 - längden på line
-					        //Räknar ut poängen, 700 - skalad längd^2
 			                var points = Math.sqrt(Math.pow((pinAnswer.getPosition().x - pinQuestion.getPosition().x)/window.innerWidth,2) 
 			                   + Math.pow((pinAnswer.getPosition().y - pinQuestion.getPosition().y)/window.innerHeight,2));
 			 
@@ -315,6 +376,17 @@
 			                else if(points>1/2)
 			                {
 			                	points =1;
+
+					        var text_points = new Kinetic.Text({
+						    x: percent_width*66,
+						    y: percent_height*91,
+						    text: points.toFixed(0) + ' poäng',
+					        	fontSize: percent_height*3,
+					        	fontFamily: 'Calibri',
+				    	    	fill: 'white',
+				    	    	visible: true
+				    	  	});
+
 			                	star1.setFill('yellow');
 			                	anim_1point.start();		//startar animation för 1 poäng
 			                }
@@ -372,17 +444,33 @@
 					        //layer.add(circle);
 
 					        layer.draw();
-					        text_points.setVisible(false);
+					        //text_points.setVisible(false);
 				        
 				        
 
 	     				});
 
+						
+
 				     	//Funktion som kopplas till 'nästa'knappen
 				     	//sätter circle, line och circle2 till utgångsvärdena
 				     	//sätter rect_next, text_ans och text_next_btn till osynliga
 				     	group_next.on('tap click', function(){
+					     	flag = true;
+					     	if(i == 2)
+					     	{
+					     		//rita slutskärmen
+					     		layer_end.draw();
+						   	 	pinQuestion.setVisible(false);
+ 						     	line.setAttrs(lineDrawn);
+ 						     	text_result_end.setText('Du fick ' + sum.toFixed(0) + ' poäng');
+					     		stage.add(layer_end);
+					     		var flag = false;
+					     	}
 					     	//circle.setAttrs(circleCenter_layout)
+					     	if(flag)
+					     	{
+					     	console.log("hejhej");
 					     	line.setAttrs(lineDrawn);
 					     	//circle2.setAttrs(circleAnswer)
 					     	rect_next.setVisible(false);
@@ -390,10 +478,6 @@
 						    text_next_btn.setVisible(false);
 
 						    //Dölj svaret, reseta position för frågepin och gör dragbar
-						    pinAnswer.setVisible(false);
-						    pinQuestion.setPosition(percent_width*50,percent_height*50);
-						    pinQuestion.setDraggable(true);
-
 						    pinAnswer.setVisible(false);
 						    pinQuestion.setPosition(percent_width*50,percent_height*50);
 						    pinQuestion.setDraggable(true);
@@ -440,9 +524,9 @@
 
 						    sound_btn.play();
 					     	layer.draw();
+					     	}
+					     	
 
-					     	if(i == 5)
-					     		alert("Game over");
 				     	});
 
 				     	group_start.on('tap click', function(){
@@ -459,7 +543,61 @@
 				     		layer.draw();
 				     	});
 
-				     	//Lägger till cirkeln till lagret och sedan lägger lagret i stagen
+				     	group_about.on('tap click', function(){
+				     		sound_btn.play();
+				     		text_about_info.setVisible(true);
+				     		text_howto_info.setVisible(false);
+				     		
+				     		layer_start.draw();
+				     	});
+
+				     	group_howto.on('tap click', function(){
+				     		sound_btn.play();
+				     		text_howto_info.setVisible(true);
+				     		text_about_info.setVisible(false);
+
+				     		layer_start.draw();
+				     	});
+
+				     	group_end.on('tap click', function(){
+					   	 	layer_end.clear();
+					   	 	pinQuestion.setVisible(true)
+					   	 	pinAnswer.setVisible(false);
+					    	pinQuestion.setPosition(percent_width*50,
+				    		percent_height*50);
+						    pinQuestion.setDraggable(true);
+						    i=0;
+						    sum = 0;
+
+						    text_starTotal.setText('x' + ' ' + sum.toFixed(0));
+
+						    anim_1point.stop();
+						    anim_2point.stop();
+						    anim_3point.stop();
+						    anim_4point.stop();
+						    anim_5point.stop();
+
+						    rect_quest_fill1.setFill(0)
+						    rect_quest_fill2.setFill(0)
+						    rect_quest_fill3.setFill(0)
+						    rect_quest_fill4.setFill(0)
+						    rect_quest_fill5.setFill(0)
+
+						 
+						    
+					     	star1.setFill(0);
+					     	star2.setFill(0);
+					     	star3.setFill(0);
+					     	star4.setFill(0);
+					     	star5.setFill(0);
+
+					        //circle.setFill('green');
+					        //layer.add(circle);
+
+				     		layer.draw();
+
+				     	});
+				     		
 				   	  	//layer.add(rect);
 					    layer.add(rect_bar);
 			   	  		//layer.add(rect_quest_count);
@@ -485,19 +623,41 @@
 				      	group_next.add(text_next_btn);
 				      	layer.add(group_next);
 
+				      	group_end.add(rect_end_btn);
+				      	group_end.add(text_end_btn);	
+				 
+
+				      	layer_end.add(rect_end_look);
+				      	layer_end.add(rect_end);
+				      	layer_end.add(text_quest_end);
+				      	layer_end.add(text_result_end);
+				      	
+				      	//layer_end.add(rect_start_btn);
+						//layer_end.add(text_end_btn);
+	      				layer_end.add(group_end);
+
 				     	group_start.add(rect_start_btn);
-				     	group_start.add(rect_start);
 				     	group_start.add(text_quest_start_btn);
+
+				     	group_about.add(rect_about_btn);
+				     	group_about.add(text_about_btn);
+
+				     	group_howto.add(rect_howto_btn);
+				     	group_howto.add(text_howto_btn);
 				     
 				     	layer_start.add(rect_start_look);
 				     	layer_start.add(rect_meny);
 				     	layer_start.add(text_quest_meny);
+				     	layer_start.add(text_meny_slogan);
 				     	layer_start.add(group_start);
+				     	layer_start.add(group_about);
+				     	layer_start.add(group_howto);
+				     	layer_start.add(text_about_info);
+				     	layer_start.add(text_howto_info);
 				     	layer_start.draw();
 
 				    	stage.add(layer);
 				    	stage.add(layer_start);
-
 
 				    	//Animationer
 				    	var period = 2000;
@@ -543,7 +703,6 @@
 					        star4.setScale(scale);
 					        star5.setScale(scale);
 					      }, layer);
-
 					}; 
 					
 					//Sökväg till bilder
