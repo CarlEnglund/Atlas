@@ -65,7 +65,7 @@ var text_howto_info_layout = {
     x: percent_width*65,
     y: percent_height*35,
     text: 'Så här spelar man!',
-    fontSize: 30,
+    fontSize: percent_height*5,
     fontFamily: 'Calibri',
     offsetX: (percent_width*50)/2,
     fill: 'Black',
@@ -76,7 +76,7 @@ var text_about_info_layout = {
     x: percent_width*65,
     y: percent_height*35,
     text: 'Här är vi! Vi är duktiga!',
-    fontSize: 30,
+    fontSize: percent_height*5,
     fontFamily: 'Calibri',
     offsetX: (percent_width*50)/2,
     fill: 'Black',
@@ -90,14 +90,14 @@ var rect_start_btn_layout =  {
     height: percent_height*10,
     offsetX:  (percent_width*10)/2,
     offsetY: (percent_height*10)/2,
-    fill: 'lightblue',
+    fill: 'lightblue'
 };
 
 var text_quest_start_btn_layout = {
     x: percent_width*68,
     y: percent_height*66,
     text:'Start',
-    fontSize: 30,
+    fontSize: percent_height*5,
     fontFamily: 'Calibri',
     fill: 'black' 
 };
@@ -314,6 +314,67 @@ var star2_layout = {
       strokeWidth: percent_width*0.1
 };
 
+//------------ END-RUTA --------------
+
+var rect_end_look_layout = new Kinetic.Rect({
+      x: 0,
+      y: 0,
+      width: percent_width*100, 
+      height: percent_height*100,
+      fill: 'black',
+      opacity: 0.8
+
+});
+
+var rect_end_layout = {
+    x: percent_width*50,
+    y: percent_height*46,
+    width: percent_width*50,
+    height: percent_height*40,
+    fill: 'white'
+
+};
+
+var text_quest_end_layout = {
+    x: percent_width*50,
+    y: percent_height*30,
+    text: 'GRATULERAR',
+    fontSize: percent_height*5,
+    fontFamily: 'Calibri',
+    fill: 'black'
+};
+
+var text_result_end_layout = {
+    x: percent_width*50,
+    y: percent_height*40,
+    text: 'Du fick många poäng',
+    fontSize: percent_height*3,
+    fontFamily: 'Calibri',
+    fill: 'black'
+};
+
+
+var rect_end_btn_layout =  {
+    x: percent_width*50,
+    y: percent_height*50,
+    width: percent_width*10,
+    height: percent_height*10,
+    offsetX:  (percent_width*10)/2,
+    offsetY: (percent_height*10)/2,
+    fill: 'lightblue'
+};
+
+
+var text_end_btn_layout = {
+    x: percent_width*50,
+    y: percent_height*50,
+    text:'Spela igen',
+    fontSize: percent_height*3,
+    fontFamily: 'Calibri',
+    fill: 'black' 
+};
+
+//---------------------------------
 var star3_layout = {
       x: percent_width*69.5,
       y: percent_height*92,
@@ -346,3 +407,4 @@ var star5_layout = {
       stroke: 'white',
       strokeWidth: percent_width*0.1
 };
+
