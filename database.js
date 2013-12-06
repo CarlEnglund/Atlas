@@ -1,4 +1,4 @@
- /* $(document).ready(function() {
+  $(document).ready(function() {
   $.ajax({
       url: 'database.php',
       dataType: 'json',
@@ -18,7 +18,7 @@
    array = arr;
    console.log(array);
   }
-*/
+
 var percent_width = window.innerWidth/100;
 var percent_height = window.innerHeight/100;
 
