@@ -4,6 +4,8 @@
 <meta name="viewport" content="initial-scale=1.0" />
  <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="main.css">
+<link href='http://fonts.googleapis.com/css?family=Josefin+Sans:100,400' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:300' rel='stylesheet' type='text/css'>
 <head>
 	<title>Atlas</title>
 </head>
@@ -143,6 +145,10 @@
 				        text_quest_meny.setOffset({
 				      		x: text_quest_meny.getWidth()/2,
 				      		y: text_quest_meny.getHeight()/2
+				      	});
+
+				      	text_meny_slogan.setOffset({
+				      		x: text_meny_slogan.getWidth()/2,
 				      	});
 
 				        text_quest_start_btn = new Kinetic.Text(text_quest_start_btn_layout)
@@ -398,15 +404,6 @@
 			                {
 			                	points =1;
 
-					        var text_points = new Kinetic.Text({
-						    x: percent_width*66,
-						    y: percent_height*91,
-						    text: points.toFixed(0) + ' poäng',
-					        	fontSize: percent_height*3,
-					        	fontFamily: 'Calibri',
-				    	    	fill: 'white',
-				    	    	visible: true
-				    	  	});
 
 			                	star1.setFill('white');
 			                	anim_1point.start();		//startar animation för 1 poäng
@@ -480,7 +477,10 @@
 					     		layer_end.draw();
 						   	 	pinQuestion.setVisible(false);
  						     	line.setAttrs(lineDrawn);
- 						     	text_result_end.setText('Du fick ' + sum.toFixed(0) + ' poäng');
+ 						     	text_result_end.setText('Du fick ' + sum.toFixed(0) + ' poäng av 25 möjliga');
+ 						     	text_result_end.setOffset({
+ 						     		x: text_result_end.getWidth()/2
+ 						     	});
 					     		stage.add(layer_end);
 					     		var flag = false;
 					     	}
@@ -568,12 +568,16 @@
 				     		sound_btn.play();
 				     		text_about_info.setVisible(true);
 				     		text_howto_info.setVisible(false);
+				     		rect_about_btn.setFill('#79b2ce');
+				     		rect_howto_btn.setFill('lightblue');
 				     		
 				     		layer_start.draw();
 				     	});
 
 				     	group_howto.on('tap click', function(){
 				     		sound_btn.play();
+				     		rect_about_btn.setFill('lightblue');
+				     		rect_howto_btn.setFill('#79b2ce');
 				     		text_howto_info.setVisible(true);
 				     		text_about_info.setVisible(false);
 
