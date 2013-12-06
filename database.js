@@ -23,13 +23,21 @@ var percent_width = window.innerWidth/100;
 var percent_height = window.innerHeight/100;
 
 
+var text_quest_number_layout = {
+    x: percent_width*18,
+    y: percent_height*91,
+    text: "1.",
+    fontSize: percent_height*4,
+    fontFamily: 'Oxygen',
+    fill: 'white'
+};
+
 var rect_meny_layout = {
     x: percent_width*50,
     y: percent_height*46,
     width: percent_width*50,
     height: percent_height*40,
     fill: 'white'
-
 };
 
 var text_quest_meny_layout = {
@@ -209,7 +217,6 @@ var rect_quest_count_layout = {
     height: percent_height*4,
     stroke: 'white',
     strokeWidth: 1,
-
 };
 
 var rect_quest_fill_layout1 = {
@@ -219,7 +226,6 @@ var rect_quest_fill_layout1 = {
     height: percent_height*2,
     stroke: 'white',
     strokeWidth: 1,
-
 };
 
 var rect_quest_fill_layout2 = {
@@ -229,7 +235,6 @@ var rect_quest_fill_layout2 = {
     height: percent_height*2,
     stroke: 'white',
     strokeWidth: 1
-
 };
 
 var rect_quest_fill_layout3 = {
@@ -239,7 +244,6 @@ var rect_quest_fill_layout3 = {
     height: percent_height*2,
     stroke: 'white',
     strokeWidth: 1
-
 };
 
 var rect_quest_fill_layout4 = {
@@ -249,7 +253,6 @@ var rect_quest_fill_layout4 = {
     height: percent_height*2,
     stroke: 'white',
     strokeWidth: 1
-
 };
 
 var rect_quest_fill_layout5 = {
@@ -259,7 +262,6 @@ var rect_quest_fill_layout5 = {
     height: percent_height*2,
     stroke: 'white',
     strokeWidth: 1,
-
 };
 
 var text_starTotal_layout = {
@@ -314,7 +316,6 @@ var rect_end_look_layout = new Kinetic.Rect({
       height: percent_height*100,
       fill: 'black',
       opacity: 0.8
-
 });
 
 var rect_end_layout = {
@@ -323,7 +324,6 @@ var rect_end_layout = {
     width: percent_width*50,
     height: percent_height*40,
     fill: 'white'
-
 };
 
 var text_quest_end_layout = {
@@ -397,4 +397,3 @@ var star5_layout = {
       stroke: 'white',
       strokeWidth: percent_width*0.1
 };
-
