@@ -165,7 +165,7 @@ var circleAnswer_layout = {
 var text_quest_layout = {
     x: percent_width*20,
     y: percent_height*91,
-    text: 'Författaren till klassikern "Brott och straff" är född \n i hans fosterlands huvudstad, vart ligger denna huvudstad?',
+    text: " ",
     fontSize: percent_height*2,
     fontFamily: 'Calibri',
     fill: 'white'     

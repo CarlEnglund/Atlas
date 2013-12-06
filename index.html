@@ -334,7 +334,9 @@
 					  		line.setPoints([pinAnswer.getPosition().x, pinAnswer.getPosition().y, pinQuestion.getPosition().x, pinQuestion.getPosition().y]);
 
 
-
+					  		console.log(pinQuestion.getPosition().x)
+					  		console.log(pinQuestion.getPosition().y)
+					  		text_quest.setText(array[i].a)
 					  		layer.add(line);
 					        layer.add(pinAnswer);
 
@@ -416,32 +418,32 @@
 
 					        //Fyller frågeräknargrafiken med i många femtedelar
 					        if(i == 0)
-					        	rect_quest_fill1.setFill('green')
+					        	rect_quest_fill1.setFill('white')
 					        else if(i == 1)
 					        {
-					        	rect_quest_fill1.setFill('green')
-					        	rect_quest_fill2.setFill('green')	
+					        	rect_quest_fill1.setFill('white')
+					        	rect_quest_fill2.setFill('white')	
 					        }
 					        else if(i==2)
 					        {
-					        	rect_quest_fill1.setFill('green')
-					        	rect_quest_fill2.setFill('green')
-					        	rect_quest_fill3.setFill('green')
+					        	rect_quest_fill1.setFill('white')
+					        	rect_quest_fill2.setFill('white')
+					        	rect_quest_fill3.setFill('white')
 					        }
 					        else if(i==3)
 					        {
-					        	rect_quest_fill1.setFill('green')
-					        	rect_quest_fill2.setFill('green')
-					        	rect_quest_fill3.setFill('green')
-					        	rect_quest_fill4.setFill('green')
+					        	rect_quest_fill1.setFill('white')
+					        	rect_quest_fill2.setFill('white')
+					        	rect_quest_fill3.setFill('white')
+					        	rect_quest_fill4.setFill('white')
 					        }
 							else if(i==4)
 							{
-					        	rect_quest_fill1.setFill('green')
-					        	rect_quest_fill2.setFill('green')
-					        	rect_quest_fill3.setFill('green')
-					        	rect_quest_fill4.setFill('green')
-								rect_quest_fill5.setFill('green')
+					        	rect_quest_fill1.setFill('white')
+					        	rect_quest_fill2.setFill('white')
+					        	rect_quest_fill3.setFill('white')
+					        	rect_quest_fill4.setFill('white')
+								rect_quest_fill5.setFill('white')
 							}
 								
 
@@ -475,7 +477,7 @@
 				     	//sätter rect_next, text_ans och text_next_btn till osynliga
 				     	group_next.on('tap click', function(){
 					     	flag = true;
-					     	if(i == 2)
+					     	if(i == 4)
 					     	{
 					     		//rita slutskärmen
 					     		layer_end.draw();
@@ -503,8 +505,8 @@
 						    	
 						    text_quest.setText(array[i].q)
 						   
-				     		 x = parseFloat(array[i].coordx)*(window.innerWidth/1745)
-				     		 y = parseFloat(array[i].coordy)*(window.innerHeight/889)
+				     		 x = parseFloat(array[i].coordx)*(window.innerWidth/1920)
+				     		 y = parseFloat(array[i].coordy)*(window.innerHeight/978)
 				     		 console.log(i);
 				     		 switch(i)
 				     		 {
@@ -552,8 +554,8 @@
 				     		layer_start.clear();
 				     		i++;
 				     		text_quest.setText(array[i].q)
-				     		x = parseFloat(array[i].coordx)*(window.innerWidth/1745)
-				     		y = parseFloat(array[i].coordy)*(window.innerHeight/889)
+				     		x = parseFloat(array[i].coordx)*(window.innerWidth/1920)
+				     		y = parseFloat(array[i].coordy)*(window.innerHeight/978)
 							console.log(window.innerHeight)
 				     		
 				     		pinAnswer.setX(x)
@@ -586,8 +588,14 @@
 						    pinQuestion.setDraggable(true);
 						    i=0;
 						    sum = 0;
-
+						    text_quest.setText(array[i].q)
+				     		x = parseFloat(array[i].coordx)*(window.innerWidth/1920)
+				     		y = parseFloat(array[i].coordy)*(window.innerHeight/978)
+				     		polaroidQuestion.setImage(images.question0)	
 						    text_starTotal.setText('x' + ' ' + sum.toFixed(0));
+
+						    pinAnswer.setX(x)
+				     		pinAnswer.setY(y)
 
 						    anim_1point.stop();
 						    anim_2point.stop();
