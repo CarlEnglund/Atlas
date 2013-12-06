@@ -22,15 +22,6 @@
 var percent_width = window.innerWidth/100;
 var percent_height = window.innerHeight/100;
 
-simpleText = {
-    x: (window.innerHeight/100)*20,
-    y: (window.innerHeight/100)*90,
-    text: "lol",
-    fontSize: 30,
-    fontFamily: 'Calibri',
-    fill: 'black'
-       
-};
 
 var rect_meny_layout = {
     x: percent_width*50,
@@ -42,31 +33,30 @@ var rect_meny_layout = {
 };
 
 var text_quest_meny_layout = {
-    x: percent_width*30,
-    y: percent_height*18,
-    text: 'Atlas',
-    fontSize: 55,
-    fontFamily: 'Calibri',
+    x: percent_width*50,
+    y: percent_height*22.8,
+    text: 'A T L A S',
+    fontSize: percent_height*13,
+    fontFamily: 'Josefin Sans',
     offsetX: (percent_width*50)/2,
     fill: 'White'
 };
 
 var text_meny_slogan_layout = {
-    x: percent_width*51,
-    y: percent_height*26,
-    text: 'Världens roligaste kartspel!',
-    fontSize: 30,
-    fontFamily: 'Calibri',
-    offsetX: (percent_width*50)/2,
+    x: percent_width*50,
+    y: percent_height*29,
+    text: ' ',
+    fontSize: percent_height*2.5,
+    fontFamily: 'Oxygen',
     fill: 'Black'
 };
 
 var text_howto_info_layout = {
     x: percent_width*65,
-    y: percent_height*35,
-    text: 'Atlas spelas genom att man drar den röda \npinnen till det mål på kartan som svarar på \nfrågan. Tryck på nästaknappen i högra \nhörnet för att komma vidare till nästa fråga.',
+    y: percent_height*33,
+    text: 'Atlas spelas genom att man drar den\nröda pinnen till det mål på kartan som\nsvarar på frågan. Tryck på nästaknappen\ni högra hörnet för att komma vidare till\nnästa fråga.',
     fontSize: percent_height*3,
-    fontFamily: 'Calibri',
+    fontFamily: 'Oxygen',
     offsetX: (percent_width*50)/2,
     fill: 'Black',
     visible: false
@@ -74,14 +64,15 @@ var text_howto_info_layout = {
 
 var text_about_info_layout = {
     x: percent_width*65,
-    y: percent_height*35,
-    text: 'Atlas har tagits fram som ett projekt i \nkursen TNM040.\nVi som arbetat med det här projektet \nheter Petra Öhlin, Mattias Palmgren, \nCarl Englund, Johan Henriksson och \nJohan Reimann.',
+    y: percent_height*33,
+    text: 'Atlas är ett roligt och lärande spel för \ndig som är nyfiken, strategisk och gillar\natt resa. Låt dig inspireras av spännande \nbilder och lär dig fakta om intressanta \nplatser.',
     fontSize: percent_height*3,
-    fontFamily: 'Calibri',
+    fontFamily: 'Oxygen',
     offsetX: (percent_width*50)/2,
-    fill: 'Black',
-    visible: false
+    fill: 'Black'
 };
+
+//Atlas har tagits fram som ett projekt i \nkursen TNM040.\nVi som arbetat med det här projektet \nheter Petra Öhlin, Mattias Palmgren, \nCarl Englund, Johan Henriksson och \nJohan Reimann.
 
 var rect_start_btn_layout =  {
     x: percent_width*68,
@@ -90,40 +81,40 @@ var rect_start_btn_layout =  {
     height: percent_height*10,
     offsetX:  (percent_width*10)/2,
     offsetY: (percent_height*10)/2,
-    fill: 'lightblue'
+    fill: '#79ce7b'
 };
 
 var text_quest_start_btn_layout = {
     x: percent_width*68,
     y: percent_height*66,
-    text:'Start',
-    fontSize: percent_height*5,
-    fontFamily: 'Calibri',
+    text:'START',
+    fontSize: percent_height*4,
+    fontFamily: 'Oxygen',
     fill: 'black' 
 };
 
 var rect_about_btn_layout =  {
     x: percent_width*32,
-    y: percent_height*57,
+    y: percent_height*38,
     width: percent_width*10,
     height: percent_height*10,
     offsetX:  (percent_width*10)/2,
     offsetY: (percent_height*10)/2,
-    fill: 'lightblue',
+    fill: '#79b2ce',
 };
 
 var text_about_btn_layout = {
     x: percent_width*32,
-    y: percent_height*57,
-    text:'Om Atlas',
-    fontSize: percent_height*5,
-    fontFamily: 'Calibri',
+    y: percent_height*38,
+    text:'OM ATLAS',
+    fontSize: percent_height*3,
+    fontFamily: 'Oxygen',
     fill: 'black' 
 };
 
 var rect_howto_btn_layout =  {
     x: percent_width*32,
-    y: percent_height*42,
+    y: percent_height*51,
     width: percent_width*10,
     height: percent_height*10,
     offsetX:  (percent_width*10)/2,
@@ -133,10 +124,10 @@ var rect_howto_btn_layout =  {
 
 var text_howto_btn_layout = {
     x: percent_width*32,
-    y: percent_height*42,
-    text:'Hjälp',
-    fontSize:percent_height*5,
-    fontFamily: 'Calibri',
+    y: percent_height*51,
+    text:'HJÄLP',
+    fontSize:percent_height*3,
+    fontFamily: 'Oxygen',
     fill: 'black' 
 };
 
@@ -166,8 +157,8 @@ var text_quest_layout = {
     x: percent_width*20,
     y: percent_height*91,
     text: 'Författaren till klassikern "Brott och straff" är född \n i hans fosterlands huvudstad, vart ligger denna huvudstad?',
-    fontSize: percent_height*2,
-    fontFamily: 'Calibri',
+    fontSize: percent_height*2.5,
+    fontFamily: 'Oxygen',
     fill: 'white'     
 };
 
@@ -176,7 +167,7 @@ var text_quest_layout = {
     y: percent_height*92,
     text: 'Moskva',
     fontSize: percent_height*3,
-    fontFamily: 'Calibri',
+    fontFamily: 'Oxygen',
     fill: 'darkgray',
     visible: false    
 };*/
@@ -186,16 +177,16 @@ var rect_next_layout = {
     y: percent_height*94,
     width: percent_width*7,
     height: percent_height*7,
-    fill: 'lightblue',
+    fill: '#79ce7b',
     visible: false
 };
 
 var text_next_btn_layout = {
     x: percent_width*95,
     y: percent_height*94,
-    text: 'Nästa',
+    text: 'NÄSTA',
     fontSize: percent_height*3,
-    fontFamily: 'Calibri',
+    fontFamily: 'Oxygen',
     fill: 'black',
     visible: false				       
 };
@@ -276,7 +267,7 @@ var text_starTotal_layout = {
     y: percent_height*93,
     text: 'x 0',
     fontSize: percent_height*3,
-    fontFamily: 'Calibri',
+    fontFamily: 'Oxygen',
     fill: 'white',
     visible: true                     
 };
@@ -337,10 +328,10 @@ var rect_end_layout = {
 
 var text_quest_end_layout = {
     x: percent_width*50,
-    y: percent_height*30,
+    y: percent_height*34,
     text: 'GRATULERAR',
     fontSize: percent_height*5,
-    fontFamily: 'Calibri',
+    fontFamily: 'Oxygen',
     fill: 'black'
 };
 
@@ -349,7 +340,7 @@ var text_result_end_layout = {
     y: percent_height*40,
     text: 'Du fick många poäng',
     fontSize: percent_height*3,
-    fontFamily: 'Calibri',
+    fontFamily: 'Oxygen',
     fill: 'black'
 };
 
@@ -361,15 +352,15 @@ var rect_end_btn_layout =  {
     height: percent_height*10,
     offsetX:  (percent_width*10)/2,
     offsetY: (percent_height*10)/2,
-    fill: 'lightblue'
+    fill: '#79ce7b'
 };
 
 var text_end_btn_layout = {
     x: percent_width*68,
     y: percent_height*66,
-    text:'Spela igen',
+    text:'SPELA IGEN',
     fontSize: percent_height*3,
-    fontFamily: 'Calibri',
+    fontFamily: 'Oxygen',
     fill: 'black' 
 };
 
