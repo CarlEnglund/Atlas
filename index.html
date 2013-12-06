@@ -258,6 +258,7 @@
 
 						//Textobjekt.  Detta bör man kunna hämta via en databas
 					   	text_quest = new Kinetic.Text(text_quest_layout)
+					   	text_quest_number = new Kinetic.Text(text_quest_number_layout)
 
 					   	//Textobjekt. Detta bör man kunna hämta via en databas
 					   	/*text_ans = new Kinetic.Text(text_ans_layout)*/
@@ -464,11 +465,7 @@
 					        layer.draw();
 					        //text_points.setVisible(false);
 				        
-				        
-
 	     				});
-
-						
 
 				     	//Funktion som kopplas till 'nästa'knappen
 				     	//sätter circle, line och circle2 till utgångsvärdena
@@ -494,13 +491,13 @@
 					     	rect_next.setVisible(false);
 						    //text_ans.setVisible(false);
 						    text_next_btn.setVisible(false);
-
-						    //Dölj svaret, reseta position för frågepin och gör dragbar
+							//Dölj svaret, reseta position för frågepin och gör dragbar
 						    pinAnswer.setVisible(false);
 						    pinQuestion.setPosition(percent_width*50,percent_height*50);
 						    pinQuestion.setDraggable(true);
 					       	 i++;
-						    	
+						    text_quest_number.setText(i + 1 + '.')
+
 						    text_quest.setText(array[i].q)
 						   
 				     		 x = parseFloat(array[i].coordx)*(window.innerWidth/1745)
@@ -558,6 +555,7 @@
 				     		x = parseFloat(array[i].coordx)*(window.innerWidth/1745)
 				     		y = parseFloat(array[i].coordy)*(window.innerHeight/889)
 							console.log(window.innerHeight)
+							text_quest_number.setText(i + 1 + '.')
 				     		
 				     		pinAnswer.setX(x)
 				     		pinAnswer.setY(y)
@@ -628,6 +626,7 @@
 			    		layer.add(rect_quest_fill4);
 			    		layer.add(rect_quest_fill5);
 					    layer.add(text_quest);
+					    layer.add(text_quest_number);
 					    layer.add(polaroidFrame);
 					    layer.add(polaroidQuestion);
 					    layer.add(pinQuestion);
