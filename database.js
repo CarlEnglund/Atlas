@@ -24,10 +24,10 @@ var percent_height = window.innerHeight/100;
 
 
 var text_quest_number_layout = {
-    x: percent_width*18,
-    y: percent_height*91,
+    x: percent_width*19,
+    y: percent_height*93,
     text: "1.",
-    fontSize: percent_height*4,
+    fontSize: percent_height*3.5,
     fontFamily: 'Oxygen',
     fill: 'white'
 };
@@ -42,11 +42,10 @@ var rect_meny_layout = {
 
 var text_quest_meny_layout = {
     x: percent_width*50,
-    y: percent_height*22.8,
+    y: percent_height*21.5,
     text: 'A T L A S',
     fontSize: percent_height*13,
     fontFamily: 'Josefin Sans',
-    offsetX: (percent_width*50)/2,
     fill: 'White'
 };
 
@@ -108,7 +107,7 @@ var rect_about_btn_layout =  {
     height: percent_height*10,
     offsetX:  (percent_width*10)/2,
     offsetY: (percent_height*10)/2,
-    fill: '#79b2ce',
+    fill: 'lightblue',
 };
 
 var text_about_btn_layout = {
@@ -127,7 +126,7 @@ var rect_howto_btn_layout =  {
     height: percent_height*10,
     offsetX:  (percent_width*10)/2,
     offsetY: (percent_height*10)/2,
-    fill: 'lightblue',
+    fill: '79b2ce'
 };
 
 var text_howto_btn_layout = {
@@ -162,9 +161,9 @@ var circleAnswer_layout = {
 };
 
 var text_quest_layout = {
-    x: percent_width*20,
-    y: percent_height*91,
-    text: 'Författaren till klassikern "Brott och straff" är född \n i hans fosterlands huvudstad, vart ligger denna huvudstad?',
+    x: percent_width*21,
+    y: percent_height*94,
+    text: ' ',
     fontSize: percent_height*2.5,
     fontFamily: 'Oxygen',
     fill: 'white'     
