@@ -1,6 +1,6 @@
 <?php
 header("Content-type: application/json");
-mysql_connect("atlas-170072.mysql.binero.se", "170072_ru97167", "Hejsan123") or die("lol" . mysql_error()); 
+mysql_connect() or die("lol" . mysql_error()); 
 
 mysql_select_db("170072-atlas") or die(mysql_error()); 
 
