@@ -25,7 +25,7 @@ var percent_height = window.innerHeight/100;
 
 var text_quest_number_layout = {
     x: percent_width*19,
-    y: percent_height*93,
+    y: percent_height*93.1,
     text: "1.",
     fontSize: percent_height*3.5,
     fontFamily: 'Oxygen',
@@ -62,7 +62,7 @@ var text_howto_info_layout = {
     x: percent_width*65,
     y: percent_height*33,
     text: 'Atlas spelas genom att man drar den\nröda pinnen till det mål på kartan som\nsvarar på frågan. Tryck på nästaknappen\ni högra hörnet för att komma vidare till\nnästa fråga.',
-    fontSize: percent_height*3,
+    fontSize: percent_width*1.5,
     fontFamily: 'Oxygen',
     offsetX: (percent_width*50)/2,
     fill: 'Black',
@@ -73,7 +73,7 @@ var text_about_info_layout = {
     x: percent_width*65,
     y: percent_height*33,
     text: 'Atlas är ett roligt och lärande spel för \ndig som är nyfiken, strategisk och gillar\natt resa. Låt dig inspireras av spännande \nbilder och lär dig fakta om intressanta \nplatser.',
-    fontSize: percent_height*3,
+    fontSize: percent_width*1.5,
     fontFamily: 'Oxygen',
     offsetX: (percent_width*50)/2,
     fill: 'Black'
@@ -180,7 +180,7 @@ var text_quest_layout = {
 };*/
 
 var rect_next_layout = {
-    x: percent_width*95,
+    x: percent_width*96,
     y: percent_height*94,
     width: percent_width*7,
     height: percent_height*7,
@@ -189,7 +189,7 @@ var rect_next_layout = {
 };
 
 var text_next_btn_layout = {
-    x: percent_width*95,
+    x: percent_width*96,
     y: percent_height*94,
     text: 'NÄSTA',
     fontSize: percent_height*3,
@@ -264,7 +264,7 @@ var rect_quest_fill_layout5 = {
 };
 
 var text_starTotal_layout = {
-    x: percent_width*87,
+    x: percent_width*89,
     y: percent_height*93,
     text: 'x 0',
     fontSize: percent_height*3,
@@ -273,38 +273,9 @@ var text_starTotal_layout = {
     visible: true                     
 };
 
-var starTotal_layout = {
-      x: percent_width*85.7,
-      y: percent_height*94.4,
-      numPoints: 5,
-      innerRadius: percent_width*0.5,
-      outerRadius: percent_width*1,
-      fill: 'white',
-      //stroke: '#ffcb00',
-      //strokeWidth: percent_width*0.1
-};
 
-var star1_layout = {
-      x: percent_width*64.5,
-      y: percent_height*94,
-      numPoints: 5,
-      innerRadius: percent_width*0.6,
-      outerRadius: percent_width*1.2,
-      fill: 0,
-      stroke: 'white',
-      strokeWidth: percent_width*0.1
-};
 
-var star2_layout = {
-      x: percent_width*67,
-      y: percent_height*94,
-      numPoints: 5,
-      innerRadius: percent_width*0.6,
-      outerRadius: percent_width*1.2,
-      fill: 0,
-      stroke: 'white',
-      strokeWidth: percent_width*0.1
-};
+
 
 //------------ END-RUTA --------------
 
@@ -345,9 +316,9 @@ var text_result_end_layout = {
 
 
 var rect_end_btn_layout =  {
-    x: percent_width*68,
+    x: percent_width*65,
     y: percent_height*66,
-    width: percent_width*10,
+    width: percent_width*13 ,
     height: percent_height*10,
     offsetX:  (percent_width*10)/2,
     offsetY: (percent_height*10)/2,
@@ -355,17 +326,48 @@ var rect_end_btn_layout =  {
 };
 
 var text_end_btn_layout = {
-    x: percent_width*68,
+    x: percent_width*66.5,
     y: percent_height*66,
     text:'SPELA IGEN',
-    fontSize: percent_height*3,
+    fontSize: percent_width*2,
     fontFamily: 'Oxygen',
     fill: 'black' 
 };
 
 //---------------------------------
+var starTotal_layout = {
+      x: percent_width*87.7,
+      y: percent_height*94.4,
+      numPoints: 5,
+      innerRadius: percent_width*0.5,
+      outerRadius: percent_width*1,
+      fill: 'white',
+      //stroke: '#ffcb00',
+      //strokeWidth: percent_width*0.1
+};
+var star1_layout = {
+      x: percent_width*74,
+      y: percent_height*94,
+      numPoints: 5,
+      innerRadius: percent_width*0.6,
+      outerRadius: percent_width*1.2,
+      fill: 0,
+      stroke: 'white',
+      strokeWidth: percent_width*0.1
+};
+
+var star2_layout = {
+      x: percent_width*76.5,
+      y: percent_height*94,
+      numPoints: 5,
+      innerRadius: percent_width*0.6,
+      outerRadius: percent_width*1.2,
+      fill: 0,
+      stroke: 'white',
+      strokeWidth: percent_width*0.1
+};
 var star3_layout = {
-      x: percent_width*69.5,
+      x: percent_width*79,
       y: percent_height*94,
       numPoints: 5,
       innerRadius: percent_width*0.6,
@@ -376,7 +378,7 @@ var star3_layout = {
 };
 
 var star4_layout = {
-      x: percent_width*72,
+      x: percent_width*81.5,
       y: percent_height*94,
       numPoints: 5,
       innerRadius: percent_width*0.6,
@@ -387,7 +389,7 @@ var star4_layout = {
 };
 
 var star5_layout = {
-      x: percent_width*74.5,
+      x: percent_width*84,
       y: percent_height*94,
       numPoints: 5,
       innerRadius: percent_width*0.6,
